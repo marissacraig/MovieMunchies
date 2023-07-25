@@ -11,16 +11,34 @@
 <body>
     <header class="columns is-mobile is-centered">
         <div class="column is-gapless is-half has-background-danger-dark has-text-white">
-            <h1 class="is-size-2 ml-4">Movie</h1>
+            <h1 class="is-size-2 ml-4 mt-3">Movie</h1>
+            <form class="ml-4 mr-4 mt-4">
+                <!-- This will create a dropdown of all possible selections in the searchbar -->
+                <!-- In list put id of datalist -->
+                <input list="movie-dropdown" class="input is-rounded column is-full" placeholder="Search movie categories">
+                <datalist id="movie-dropdown">
+                    <option value="Horror">
+                    <option value="Romance">
+                    <option value="Action">
+                </datalist>
+            </form>
         </div>
         <div class="column is-gapless has-background-grey-light has-text-white">
-            <h1 class="is-size-2 ml-4">Munchies</h1>
+            <h1 class="is-size-2 ml-4 mt-3">Munchies</h1>
+            <form class="ml-4 mr-4 mt-4">
+                <!-- This will create a dropdown of all possible selections in the searchbar -->
+                <!-- In list put id of datalist -->
+                <input list="munchies-dropdown" class="input is-rounded column is-full" placeholder="Search food categories">
+                <datalist id="munchies-dropdown">
+                    
+                </datalist>
+            </form>
         </div>
     </header>
 
     <main>
         <div>
-            <p>hello world</p>
+            <p class="ml-4">hello world</p>
         </div>
     </main>
 
