@@ -15,8 +15,9 @@
             <form class="ml-4 mr-4 mt-4">
                 <!-- This will create a dropdown of all possible selections in the searchbar -->
                 <!-- In list put id of datalist -->
-                <input list="movie-dropdown" class="input is-rounded column is-full" placeholder="Search movie categories">
-                <datalist id="movie-dropdown">
+                <input list="movie-genres" class="input is-rounded column is-full" placeholder="Search movie categories">
+                <datalist id="movie-genres">
+                    <!-- Placeholders to test how it works -->
                     <option value="Horror">
                     <option value="Romance">
                     <option value="Action">
@@ -29,8 +30,9 @@
             <form class="ml-4 mr-4 mt-4">
                 <!-- This will create a dropdown of all possible selections in the searchbar -->
                 <!-- In list put id of datalist -->
-                <input list="munchies-dropdown" class="input is-rounded column is-full" placeholder="Search food categories">
-                <datalist id="munchies-dropdown">
+                <input list="food-genres" class="input is-rounded column is-full" placeholder="Search food categories">
+                <datalist id="food-genres">
+                    <!-- Placeholders to test how it works -->
                     <option value="Spicy">
                     <option value="Chinese">
                 </datalist>
@@ -40,19 +42,23 @@
 
     <main class="columns is-mobile is-centered has-background-grey">
         <section class="column is-gapless is-half">
-            <!-- Other info like picture name of movie and description will go in this div -->
-            <div class="box">
-                <p class="ml-4">hello world</p>
+            <div class="container">
+                <!-- Other info like picture name of movie and description will go in this div -->
+                <div class="box">
+                    <p>hello world</p>
+                </div>
+                <button>next</button>
             </div>
-            <button>next</button>
         </section>
 
         <section class="column is-gapless">
-            <!-- other info like picture name of food time to cook etc. will be in this div -->
-            <div class="box">
-                <p class="ml-4">hello world</p>
+            <div class="container">
+                <!-- other info like picture name of food time to cook etc. will be in this div -->
+                <div class="box">
+                    <p>hello world</p>
+                </div>
+                <button>next</button>
             </div>
-            <button>next</button>
         </section>
     </main>
 
