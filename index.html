@@ -10,33 +10,62 @@
 
 <body class="is-mobile has-background-grey">
     <header class="columns is-centered">
+
+        <!-- movies column -->
         <div class="column is-gapless is-half has-background-danger-dark has-text-white">
             <h1 class="is-size-2 ml-4 mt-3">Movie</h1>
-            <form class="ml-4 mr-4 mt-4">
-                <!-- This will create a dropdown of all possible selections in the searchbar -->
-                <!-- In list put id of datalist -->
-                <input list="movie-genres" class="input is-rounded column is-full" placeholder="Search movie categories">
-                <datalist id="movie-genres">
-                    <!-- Placeholders to test how it works -->
-                    <option value="Horror">
-                    <option value="Romance">
-                    <option value="Action">
-                </datalist>
-            </form>
+
+            <!-- Movie Searchbar -->
+            <div class="field has-addons ml-4 mr-4 mt-4">
+                <div class="control">
+                    <!-- This will create a dropdown of all possible selections in the searchbar -->
+                    <!-- In list put id of datalist -->
+                  <input id="tag-input" list="movie-genres" class="input column is-full" type="text" placeholder="Search movie categories">
+                  <datalist id="movie-genres">
+                        <!-- Placeholders to test how it works -->
+                        <option value="Horror">
+                        <option value="Romance">
+                        <option value="Action">
+                    </datalist>
+                </div>
+                <div class="control">
+                  <a id="add-tag" class="button is-link">
+                    Add
+                  </a>
+                </div>
+            </div>
+
+            <div id="tag-field" class="field is-grouped is-grouped-multiline">
+            </div>
+
         </div>
 
+        <!-- Munchies column -->
         <div class="column is-gapless has-background-grey-light has-text-white">
             <h1 class="is-size-2 ml-4 mt-3">Munchies</h1>
-            <form class="ml-4 mr-4 mt-4">
-                <!-- This will create a dropdown of all possible selections in the searchbar -->
-                <!-- In list put id of datalist -->
-                <input list="food-genres" class="input is-rounded column is-full" placeholder="Search food categories">
-                <datalist id="food-genres">
-                    <!-- Placeholders to test how it works -->
-                    <option value="Spicy">
-                    <option value="Chinese">
-                </datalist>
-            </form>
+            
+            <!-- munchies searchbar -->
+            <div class="field has-addons ml-4 mr-4 mt-4">
+                <div class="control">
+                    <!-- This will create a dropdown of all possible selections in the searchbar -->
+                    <!-- In list put id of datalist -->
+                  <input id="tag-input" list="food-genres" class="input column is-full" type="text" placeholder="Search food categories">
+                    <datalist id="food-genres">
+                        <!-- Placeholders to test how it works -->
+                        <option value="Spicy">
+                        <option value="Chinese">
+                    </datalist>
+                </div>
+                <div class="control">
+                  <a id="add-tag" class="button is-link">
+                    Add
+                  </a>
+                </div>
+            </div>
+
+            <div id="tag-field" class="field is-grouped is-grouped-multiline">
+            </div>
+
         </div>
     </header>
 
@@ -48,8 +77,11 @@
                     <div class="column is-half is-gapless">
                         <img src="/Photos/cat-placeholder.jpg">
                     </div>
-                    <p>hello world</p>
+                    <div>
+                        <p>hello world</p>
+                    </div>    
                 </div>
+                <!-- Skip button to randomize new movie -->
                 <div class="buttons is-centered">
                     <button class="button">SKIP</button>
                 </div>
@@ -59,10 +91,15 @@
         <section class="column is-gapless">
             <div class="container">
                 <!-- other info like picture name of food time to cook etc. will be in this div -->
-                <div class="box m-6">
-                    <p>hello world</p>
+                <div class="box m-6 columns">
+                    <div class="column is-half is-gapless">
+                        <img src="/Photos/cat-placeholder.jpg">
+                    </div>
+                    <div>
+                        <p>hello world</p>
+                    </div>    
                 </div>
-
+                <!-- skip button to randomize new food -->
                 <div class="buttons is-centered">
                     <button class="button">SKIP</button>
                 </div>
