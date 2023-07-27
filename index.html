@@ -23,6 +23,7 @@
                 </datalist>
             </form>
         </div>
+
         <div class="column is-gapless has-background-grey-light has-text-white">
             <h1 class="is-size-2 ml-4 mt-3">Munchies</h1>
             <form class="ml-4 mr-4 mt-4">
@@ -30,18 +31,28 @@
                 <!-- In list put id of datalist -->
                 <input list="munchies-dropdown" class="input is-rounded column is-full" placeholder="Search food categories">
                 <datalist id="munchies-dropdown">
-                    
+                    <option value="Spicy">
+                    <option value="Chinese">
                 </datalist>
             </form>
         </div>
     </header>
 
-    <main class="columns is-mobile is-centered">
+    <main class="columns is-mobile is-centered has-background-grey">
         <section class="column is-gapless is-half">
-            <p class="ml-4">hello world</p>
+            <!-- Other info like picture name of movie and description will go in this div -->
+            <div class="box">
+                <p class="ml-4">hello world</p>
+            </div>
+            <button>next</button>
         </section>
+
         <section class="column is-gapless">
-            <p class="ml-4">hello world</p>
+            <!-- other info like picture name of food time to cook etc. will be in this div -->
+            <div class="box">
+                <p class="ml-4">hello world</p>
+            </div>
+            <button>next</button>
         </section>
     </main>
 
