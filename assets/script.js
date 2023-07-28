@@ -106,6 +106,7 @@ movieTagInput.addEventListener("keyup", (event) => {
 });
 
 
+
 // Code for food search tags
 const munchieTagField = document.getElementById("munchie-tag-field");
 const munchieAddTag = document.getElementById("munchie-add-tag");
