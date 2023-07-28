@@ -20,7 +20,7 @@
                 <div class="control">
                     <!-- This will create a dropdown of all possible selections in the searchbar -->
                     <!-- In list put id of datalist -->
-                  <input id="tag-input" list="movie-genres" class="input column is-full" type="text" placeholder="Search movie categories">
+                  <input id="movie-tag-input" list="movie-genres" class="input column is-full" type="text" placeholder="Search movie categories">
                   <datalist id="movie-genres">
                         <!-- Placeholders to test how it works -->
                         <option value="Horror">
@@ -29,13 +29,13 @@
                     </datalist>
                 </div>
                 <div class="control">
-                  <a id="add-tag" class="button is-link">
+                  <a id="movie-add-tag" class="button is-link">
                     Add
                   </a>
                 </div>
             </div>
 
-            <div id="tag-field" class="field is-grouped is-grouped-multiline">
+            <div id="movie-tag-field" class="field is-grouped is-grouped-multiline ml-4">
             </div>
 
         </div>
@@ -43,27 +43,27 @@
         <!-- Munchies column -->
         <div class="column is-gapless has-background-grey-light has-text-white">
             <h1 class="is-size-2 ml-4 mt-3">Munchies</h1>
-            
+
             <!-- munchies searchbar -->
             <div class="field has-addons ml-4 mr-4 mt-4">
                 <div class="control">
                     <!-- This will create a dropdown of all possible selections in the searchbar -->
                     <!-- In list put id of datalist -->
-                  <input id="tag-input" list="food-genres" class="input column is-full" type="text" placeholder="Search food categories">
-                    <datalist id="food-genres">
+                  <input id="munchie-tag-input" list="munchie-genres" class="input column is-full" type="text" placeholder="Search food categories">
+                    <datalist id="munchie-genres">
                         <!-- Placeholders to test how it works -->
                         <option value="Spicy">
                         <option value="Chinese">
                     </datalist>
                 </div>
                 <div class="control">
-                  <a id="add-tag" class="button is-link">
+                  <a id="munchie-add-tag" class="button is-link">
                     Add
                   </a>
                 </div>
             </div>
 
-            <div id="tag-field" class="field is-grouped is-grouped-multiline">
+            <div id="munchie-tag-field" class="field is-grouped is-grouped-multiline ml-4">
             </div>
 
         </div>
@@ -72,7 +72,8 @@
     <main class="columns is-mobile is-centered">
         <section class="column is-gapless is-half">
             <div class="container">
-                <!-- Other info like picture name of movie and description will go in this div -->
+
+                <!-- Movie info container -->
                 <div class="box m-6 columns">
                     <div class="column is-half is-gapless">
                         <img src="/Photos/cat-placeholder.jpg">
@@ -81,6 +82,7 @@
                         <p>hello world</p>
                     </div>    
                 </div>
+
                 <!-- Skip button to randomize new movie -->
                 <div class="buttons is-centered">
                     <button class="button">SKIP</button>
@@ -90,7 +92,8 @@
 
         <section class="column is-gapless">
             <div class="container">
-                <!-- other info like picture name of food time to cook etc. will be in this div -->
+
+                <!-- Food info container -->
                 <div class="box m-6 columns">
                     <div class="column is-half is-gapless">
                         <img src="/Photos/cat-placeholder.jpg">
@@ -99,6 +102,7 @@
                         <p>hello world</p>
                     </div>    
                 </div>
+
                 <!-- skip button to randomize new food -->
                 <div class="buttons is-centered">
                     <button class="button">SKIP</button>
