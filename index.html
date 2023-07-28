@@ -8,15 +8,16 @@
     <link rel="stylesheet" href="./assets/style.css" />
 </head>
 
-<body class="is-mobile has-background-grey">
-    <header class="columns is-centered">
+<body class="has-background-grey">
+    <header class="has-background-danger-dark">
+        <h1 class="has-text-white p-6 is-size-1">Movie Munchies</h1>
+    </header>
 
-        <!-- movies column -->
-        <div class="column is-gapless is-half has-background-danger-dark has-text-white">
-            <h1 class="is-size-2 ml-4 mt-3">Movie</h1>
-
-            <!-- Movie Searchbar -->
-            <div class="field has-addons ml-4 mr-4 mt-4">
+    <main class="columns is-mobile is-centered">
+        <!-- Movie Side -->
+        <section class="column is-gapless is-half">
+        
+            <div class="field has-addons ml-6 mr-4 mt-4">
                 <div class="control">
                     <!-- This will create a dropdown of all possible selections in the searchbar -->
                     <!-- In list put id of datalist -->
@@ -35,17 +36,38 @@
                 </div>
             </div>
 
-            <div id="movie-tag-field" class="field is-grouped is-grouped-multiline ml-4">
+            <div id="movie-tag-field" class="field is-grouped is-grouped-multiline ml-6">
             </div>
 
-        </div>
+            <!-- Search button -->
+            <div>
+                <button class="ml-6 button">Search</button>
+            </div>
 
-        <!-- Munchies column -->
-        <div class="column is-gapless has-background-grey-light has-text-white">
-            <h1 class="is-size-2 ml-4 mt-3">Munchies</h1>
 
-            <!-- munchies searchbar -->
-            <div class="field has-addons ml-4 mr-4 mt-4">
+            <div class="container">
+
+                <!-- Movie info container -->
+                <div class="box m-6 columns">
+                    <div class="column is-half is-gapless">
+                        <img src="/Photos/cat-placeholder.jpg">
+                    </div>
+                    <div>
+                        <p>hello world</p>
+                    </div>    
+                </div>
+
+                <!-- Skip button to randomize new movie -->
+                <div class="buttons is-centered">
+                    <button class="button">SKIP</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Munchie Side -->
+        <section class="column is-gapless">
+
+            <div class="field has-addons ml-6 mr-4 mt-4">
                 <div class="control">
                     <!-- This will create a dropdown of all possible selections in the searchbar -->
                     <!-- In list put id of datalist -->
@@ -63,40 +85,20 @@
                 </div>
             </div>
 
-            <div id="munchie-tag-field" class="field is-grouped is-grouped-multiline ml-4">
+            <div id="munchie-tag-field" class="field is-grouped is-grouped-multiline ml-6">
             </div>
 
-        </div>
-    </header>
-
-    <main class="columns is-mobile is-centered">
-        <section class="column is-gapless is-half">
-            <div class="container">
-
-                <!-- Movie info container -->
-                <div class="box m-6 columns">
-                    <div class="column is-half is-gapless">
-                        <img src="Photos/cat-placeholder.jpg">
-                    </div>
-                    <div>
-                        <p>hello world</p>
-                    </div>    
-                </div>
-
-                <!-- Skip button to randomize new movie -->
-                <div class="buttons is-centered">
-                    <button class="button">SKIP</button>
-                </div>
+            <!-- Search Button -->
+            <div>
+                <button class="ml-6 button">Search</button>
             </div>
-        </section>
 
-        <section class="column is-gapless">
             <div class="container">
 
                 <!-- Food info container -->
                 <div class="box m-6 columns">
                     <div class="column is-half is-gapless">
-                        <img src="Photos/cat-placeholder.jpg">
+                        <img src="/Photos/cat-placeholder.jpg">
                     </div>
                     <div>
                         <p>hello world</p>
@@ -108,7 +110,9 @@
                     <button class="button">SKIP</button>
                 </div>
             </div>
+
         </section>
+
     </main>
 
     <script src="./assets/script.js"></script>
