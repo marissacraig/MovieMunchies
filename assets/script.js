@@ -56,7 +56,7 @@ async function searchMoviesByGenreAndService(genreId, streamingServices) {
   
         return {
           movieTitle: randomMovie.title,
-          availableOn: availableOn
+          description: randomMovie.overview
         };
       } else {
         // No movies found for the given genre and streaming services
@@ -77,6 +77,7 @@ async function searchMoviesByGenreAndService(genreId, streamingServices) {
   
       if (movie) {
         console.log(`Movie Title: ${movie.movieTitle}`);
+        console.log(`Movie Description: ${movie.description}`);
         console.log(movie);
       } else {
         console.log('No movies found for the given genre and streaming services.');
@@ -136,9 +137,11 @@ async function searchMoviesByGenreAndService(genreId, streamingServices) {
   
       if (result.results && result.results.length > 0) {
         const randomRecipe = result.results[0];
+        console.log(randomRecipe);
         return {
           recipeName: randomRecipe.title,
-          cuisineType: cuisineType
+          cuisineType: cuisineType,
+          recipeId: randomRecipe.id
         };
       } else {
         console.log(`No recipes found for cuisine type: ${cuisineType}`);
@@ -181,104 +184,128 @@ async function searchMoviesByGenreAndService(genreId, streamingServices) {
   ];
   
   async function foodCall() {
-    const randomCuisineType = 'Italian'; // Change this to the desired cuisine type
+    const randomCuisineType = 'Italian'; // WILL BE HTML ID
     const recipe = await searchRandomRecipeByCuisine(randomCuisineType);
     if (recipe) {
+      var ingredients = testRecipe(recipe.recipeId);
+  
+      console.log(`Recipe ID: ${recipe.recipeId}`);
       console.log(`Random Recipe: ${recipe.recipeName}`);
       console.log(`Cuisine Type: ${recipe.cuisineType}`);
     }
   }
-  foodCall();  
-
+  foodCall();
+  
+  
+  async function testRecipe() {
+    const url = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/1003464/ingredientWidget.json';
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': 'd0b1b145cemsh6d5d86e9c3f2bd6p11bb95jsnec9d7eb91295',
+        'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+      }
+    };
+  
+    try {
+      const response = await fetch(url, options);
+      const result = await response.text();
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  testRecipe();
+  
   // Code for movie search tags
-const movieTagField = document.getElementById("movie-tag-field");
-const movieAddTag = document.getElementById("movie-add-tag");
-const movieTagInput = document.getElementById("movie-tag-input");
-
-function createMovieTag(message) {
-    const controlDiv = document.createElement("div");
-    controlDiv.classList.add("control");
-
-    const tags = document.createElement("div");
-    tags.classList.add("tags", "has-addons");
-
-    const tagContent = document.createElement("a");
-    tagContent.classList.add("tag", "is-link");
-    tagContent.innerText = message;
-
-    const tagDelete = document.createElement("a");
-    tagDelete.classList.add("tag", "is-delete");
-    tagDelete.addEventListener("click", (event) => {
-        movieTagField.removeChild(controlDiv);
-    });
-
-    // finally nest all the tags together
-    tags.appendChild(tagContent);
-    tags.appendChild(tagDelete);
-    controlDiv.appendChild(tags);
-    movieTagField.appendChild(controlDiv);
-
-}
-
-// When add button is clicked, create movie tag with the input text from movieTagInput
-movieAddTag.addEventListener("click", () => {
-    if (movieTagInput.value !== "") {
-        createMovieTag(movieTagInput.value);
-    }
-    // Clear movieTagInput
-    movieTagInput.value = "";
-});
-
-// Same as above except with enter key pressed to add tag
-movieTagInput.addEventListener("keyup", (event) => {
-    if ((event.keyCode === 13) && (movieTagInput.value !== "")) {
-        createMovieTag(movieTagInput.value);
-        movieTagInput.value = "";
-    }
-});
-
-
-
-// Code for food search tags
-const munchieTagField = document.getElementById("munchie-tag-field");
-const munchieAddTag = document.getElementById("munchie-add-tag");
-const munchieTagInput = document.getElementById("munchie-tag-input");
-
-function createMunchieTag(message) {
-    const controlDiv = document.createElement("div");
-    controlDiv.classList.add("control");
-
-    const tags = document.createElement("div");
-    tags.classList.add("tags", "has-addons");
-
-    const tagContent = document.createElement("a");
-    tagContent.classList.add("tag", "is-link");
-    tagContent.innerText = message;
-
-    const tagDelete = document.createElement("a");
-    tagDelete.classList.add("tag", "is-delete");
-    tagDelete.addEventListener("click", (event) => {
-        munchieTagField.removeChild(controlDiv);
-    });
-
-    // finally nest all the tags together
-    tags.appendChild(tagContent);
-    tags.appendChild(tagDelete);
-    controlDiv.appendChild(tags);
-    munchieTagField.appendChild(controlDiv);
-
-}
-
-munchieAddTag.addEventListener("click", () => {
-    if (munchieTagInput.value !== "") {
-        createMunchieTag(munchieTagInput.value);
-    }
-    munchieTagInput.value = "";
-});
-
-munchieTagInput.addEventListener("keyup", (event) => {
-    if ((event.keyCode === 13) && (munchieTagInput.value !== "")) {
-        createMunchieTag(munchieTagInput.value);
-        munchieTagInput.value = "";
-    }
-});
+  const movieTagField = document.getElementById("movie-tag-field");
+  const movieAddTag = document.getElementById("movie-add-tag");
+  const movieTagInput = document.getElementById("movie-tag-input");
+  
+  function createMovieTag(message) {
+      const controlDiv = document.createElement("div");
+      controlDiv.classList.add("control");
+  
+      const tags = document.createElement("div");
+      tags.classList.add("tags", "has-addons");
+  
+      const tagContent = document.createElement("a");
+      tagContent.classList.add("tag", "is-link");
+      tagContent.innerText = message;
+  
+      const tagDelete = document.createElement("a");
+      tagDelete.classList.add("tag", "is-delete");
+      tagDelete.addEventListener("click", (event) => {
+          movieTagField.removeChild(controlDiv);
+      });
+  
+      // finally nest all the tags together
+      tags.appendChild(tagContent);
+      tags.appendChild(tagDelete);
+      controlDiv.appendChild(tags);
+      movieTagField.appendChild(controlDiv);
+  
+  }
+  
+  // When add button is clicked, create movie tag with the input text from movieTagInput
+  movieAddTag.addEventListener("click", () => {
+      if (movieTagInput.value !== "") {
+          createMovieTag(movieTagInput.value);
+      }
+      // Clear movieTagInput
+      movieTagInput.value = "";
+  });
+  
+  // Same as above except with enter key pressed to add tag
+  movieTagInput.addEventListener("keyup", (event) => {
+      if ((event.keyCode === 13) && (movieTagInput.value !== "")) {
+          createMovieTag(movieTagInput.value);
+          movieTagInput.value = "";
+      }
+  });
+  
+  
+  
+  // Code for food search tags
+  const munchieTagField = document.getElementById("munchie-tag-field");
+  const munchieAddTag = document.getElementById("munchie-add-tag");
+  const munchieTagInput = document.getElementById("munchie-tag-input");
+  
+  function createMunchieTag(message) {
+      const controlDiv = document.createElement("div");
+      controlDiv.classList.add("control");
+  
+      const tags = document.createElement("div");
+      tags.classList.add("tags", "has-addons");
+  
+      const tagContent = document.createElement("a");
+      tagContent.classList.add("tag", "is-link");
+      tagContent.innerText = message;
+  
+      const tagDelete = document.createElement("a");
+      tagDelete.classList.add("tag", "is-delete");
+      tagDelete.addEventListener("click", (event) => {
+          munchieTagField.removeChild(controlDiv);
+      });
+  
+      // finally nest all the tags together
+      tags.appendChild(tagContent);
+      tags.appendChild(tagDelete);
+      controlDiv.appendChild(tags);
+      munchieTagField.appendChild(controlDiv);
+  
+  }
+  
+  munchieAddTag.addEventListener("click", () => {
+      if (munchieTagInput.value !== "") {
+          createMunchieTag(munchieTagInput.value);
+      }
+      munchieTagInput.value = "";
+  });
+  
+  munchieTagInput.addEventListener("keyup", (event) => {
+      if ((event.keyCode === 13) && (munchieTagInput.value !== "")) {
+          createMunchieTag(munchieTagInput.value);
+          munchieTagInput.value = "";
+      }
+  });
