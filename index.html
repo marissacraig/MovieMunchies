@@ -13,6 +13,108 @@
         <h1 class="has-text-white p-6 is-size-1">Movie Munchies</h1>
     </header>
 
+    <main class="columns is-mobile is-centered">
+        <!-- Movie Side -->
+        <section class="column is-gapless is-half">
+        
+            <div class="field has-addons ml-6 mr-4 mt-4">
+                <div class="control">
+                    <!-- This will create a dropdown of all possible selections in the searchbar -->
+                    <!-- In list put id of datalist -->
+                  <input id="movie-tag-input" list="movie-genres" class="input column is-full" type="text" placeholder="Search movie categories">
+                  <datalist id="movie-genres">
+                        <!-- Placeholders to test how it works -->
+                        <option value="Horror">
+                        <option value="Romance">
+                        <option value="Action">
+                    </datalist>
+                </div>
+                <div class="control">
+                  <a id="movie-add-tag" class="button is-link">
+                    Add
+                  </a>
+                </div>
+            </div>
+
+            <div id="movie-tag-field" class="field is-grouped is-grouped-multiline ml-6">
+            </div>
+
+            <!-- Search button -->
+            <div>
+                <button class="ml-6 button">Search</button>
+            </div>
+
+
+            <div class="container">
+
+                <!-- Movie info container -->
+                <div class="box m-6 columns">
+                    <div class="column is-half is-gapless">
+                        <img src="/Photos/cat-placeholder.jpg">
+                    </div>
+                    <div>
+                        <p>hello world</p>
+                    </div>    
+                </div>
+
+                <!-- Skip button to randomize new movie -->
+                <div class="buttons is-centered">
+                    <button class="button">SKIP</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Munchie Side -->
+        <section class="column is-gapless">
+
+            <div class="field has-addons ml-6 mr-4 mt-4">
+                <div class="control">
+                    <!-- This will create a dropdown of all possible selections in the searchbar -->
+                    <!-- In list put id of datalist -->
+                  <input id="munchie-tag-input" list="munchie-genres" class="input column is-full" type="text" placeholder="Search food categories">
+                    <datalist id="munchie-genres">
+                        <!-- Placeholders to test how it works -->
+                        <option value="Spicy">
+                        <option value="Chinese">
+                    </datalist>
+                </div>
+                <div class="control">
+                  <a id="munchie-add-tag" class="button is-link">
+                    Add
+                  </a>
+                </div>
+            </div>
+
+            <div id="munchie-tag-field" class="field is-grouped is-grouped-multiline ml-6">
+            </div>
+
+            <!-- Search Button -->
+            <div>
+                <button class="ml-6 button">Search</button>
+            </div>
+
+            <div class="container">
+
+                <!-- Food info container -->
+                <div class="box m-6 columns">
+                    <div class="column is-half is-gapless">
+                        <img src="/Photos/cat-placeholder.jpg">
+                    </div>
+                    <div>
+                        <p>hello world</p>
+                    </div>    
+                </div>
+
+                <!-- skip button to randomize new food -->
+                <div class="buttons is-centered">
+                    <button class="button">SKIP</button>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
     <script src="./assets/script.js"></script>
 </body>
 </html>
