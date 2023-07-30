@@ -49,19 +49,34 @@
                   <input id="movie-tag-input" list="movie-genres" class="input column is-full" type="text" placeholder="Search movie categories">
                   <datalist id="movie-genres">
                         <!-- Placeholders to test how it works -->
-                        <option value="Horror">
-                        <option value="Romance">
                         <option value="Action">
+                        <option value="Adventure">
+                        <option value="Animation">
+                        <option value="Biography">
+                        <option value="Comedy">
+                        <option value="Crime">
+                        <option value="Documentary">
+                        <option value="Drama">
+                        <option value="Family">
+                        <option value="Fantasy">
+                        <option value="Film Noir">
+                        <option value="History">
+                        <option value="Musical">
+                        <option value="Mystery">
+                        <option value="Short">
+                        <option value="Sport">
+                        <option value="Thriller">
+                        <option value="War">
                     </datalist>
                 </div>
                 <div class="control">
-                  <a id="movie-add-tag" class="button is-link">
-                    Add
+                  <a id="movie-clear-tag" class="button is-link">
+                    Clear
                   </a>
                 </div>
 
                 <div>
-                    <button class="ml-6 button">Search</button>
+                    <button id="movieSearch" class="ml-6 button">Search</button>
                 </div>
 
             </div>
@@ -69,25 +84,21 @@
             <div id="movie-tag-field" class="field is-grouped is-grouped-multiline ml-6">
             </div>
 
-            <!-- Search button -->
-            
-
-
+            <!-- Movie info container -->
             <div class="container">
-
-                <!-- Movie info container -->
                 <div class="box m-6 columns">
                     <div class="column is-half is-gapless">
-                        <img src="/Photos/cat-placeholder.jpg">
+                        <img id="movieImage">
                     </div>
                     <div>
-                        <p>hello world</p>
+                        <h1 id="movieName" name="movieName"></h2>
+                        <p id="movieDescription"></p>
                     </div>    
                 </div>
 
                 <!-- Skip button to randomize new movie -->
                 <div class="buttons is-centered">
-                    <button class="button">SKIP</button>
+                    <button id="movieSkip" class="button">SKIP</button>
                 </div>
             </div>
         </section>
@@ -102,18 +113,42 @@
                   <input id="munchie-tag-input" list="munchie-genres" class="input column is-full" type="text" placeholder="Search food categories">
                     <datalist id="munchie-genres">
                         <!-- Placeholders to test how it works -->
-                        <option value="Spicy">
+                        <option value="African">
+                        <option value="American">
+                        <option value="British">
+                        <option value="Cajun">
+                        <option value="Caribbean">
                         <option value="Chinese">
+                        <option value="Eastern European">
+                        <option value="European">
+                        <option value="French">
+                        <option value="German">
+                        <option value="Greek">
+                        <option value="Indian">
+                        <option value="Irish">
+                        <option value="Italian">
+                        <option value="Japanese">
+                        <option value="Jewish">
+                        <option value="Korean">
+                        <option value="Latin American">
+                        <option value="Mediterranean">
+                        <option value="Mexican">
+                        <option value="Middle Eastern">
+                        <option value="Nordic">
+                        <option value="Southern">
+                        <option value="Spanish">
+                        <option value="Thai">
+                        <option value="Vietnamese">
                     </datalist>
                 </div>
                 <div class="control">
-                  <a id="munchie-add-tag" class="button is-link">
-                    Add
+                  <a id="munchie-clear-tag" class="button is-link">
+                    Clear
                   </a>
                 </div>
 
                 <div>
-                    <button class="ml-6 button">Search</button>
+                    <button id="recipeSearch" class="ml-6 button">Search</button>
                 </div>
 
             </div>
@@ -121,18 +156,15 @@
             <div id="munchie-tag-field" class="field is-grouped is-grouped-multiline ml-6">
             </div>
 
-            <!-- Search Button -->
-            
-
+            <!-- Food info container -->
             <div class="container">
-
-                <!-- Food info container -->
                 <div class="box m-6 columns">
                     <div class="column is-half is-gapless">
-                        <img src="/Photos/cat-placeholder.jpg">
+                        <img id="recipeImage">
                     </div>
                     <div>
-                        <p>hello world</p>
+                        <h1 id="recipeName"></h1>
+                        <p id="ingredientDescription"></p>
                     </div>    
 
                     
@@ -140,7 +172,7 @@
 
                 <!-- skip button to randomize new food -->
                 <div class="buttons is-centered">
-                    <button class="button">SKIP</button>
+                    <button id="recipeSkip" class="button">SKIP</button>
                 </div>
             </div>
 
