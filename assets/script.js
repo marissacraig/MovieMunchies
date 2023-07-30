@@ -72,6 +72,7 @@ async function searchMoviesByGenreAndService(genreId, streamingServices) {
 // MOVIE SEARCH EVENT
 movieSearchBtn.addEventListener('click', function (event) {
   event.preventDefault();
+  deleteMovieText ();
   const selectedCategory = document.getElementById('movie-tag-input').value;
   if (!selectedCategory) {
     alert("Please select a genre.")
@@ -170,6 +171,7 @@ async function searchRandomRecipeByCuisine(cuisineType) {
 // RECIPE SEARCH EVENT
 recipeSearchBtn.addEventListener('click', function (event) {
   event.preventDefault();
+  deleteMunchieText ();
   const selectedCuisine = document.getElementById('munchie-tag-input').value;
   if (!selectedCuisine) {
     alert("Please select a cuisine.");
@@ -329,3 +331,14 @@ function createMovieTag(message) {
 //     }
 // });
 
+function deleteMovieText() {
+    var movieTextEl = document.querySelector("#movieText");
+  
+    movieTextEl.setAttribute('class', 'is-hidden');
+}
+
+function deleteMunchieText() {
+    var munchieTextEl = document.querySelector("#munchieText");
+  
+    munchieTextEl.setAttribute('class', 'is-hidden');
+}
