@@ -8,33 +8,32 @@
     <link rel="stylesheet" href="./assets/style.css" />
 </head>
 
-<body class="hero is-mobile has-background-grey">
-  <!-- Header -->
-  <header class="hero-head">
-      <nav class="navbar" role="navigation">
-          <div class="container">
-              <!-- Navbar -->
-            <div class="navbar-brand">
-                  <!-- Logo -->
-              <a class="image is-128x128 mt-4" href="index.html">
-                <img src="Photos/Movie Munchies-1.png" alt="Logo">
-              </a>
-            </div>
-            <div class="navbar-menu">
-              <div class="navbar-end buttons mt-4">
-                <a class="navbar-item button is-inverted" href="index.html" >
-                  Home
-                </a>
-                <a class="navbar-item button is-inverted" href="save.html">
-                  Saved MM
+<body class="hero is-mobile has-background-grey is-fullheight">
+    <header class="hero-head">
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Navbar -->
+              <div class="navbar-brand">
+                    <!-- Logo -->
+                <a class="image is-128x128 mt-4" href="index.html">
+                  <img src="Photos/Movie Munchies-1.png" alt="Logo">
                 </a>
               </div>
+              <div class="navbar-menu">
+                <div class="navbar-end buttons mt-4">
+                  <a class="navbar-item button is-inverted" href="index.html" >
+                    Home
+                  </a>
+                  <a class="navbar-item button is-inverted" href="save.html">
+                    Saved MM
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
-        </nav>
-  </header>
+          </nav>
+    </header>
 
-    <main class="columns is-mobile is-centered">
+    <main class="columns is-multiline is-mobile is-centered hero-body">
         <!-- Movie Side -->
         <section class="column is-gapless is-half">
         
@@ -70,23 +69,21 @@
                     Clear
                   </a>
                 </div>
+
+                <div>
+                    <button id="movieSearch" class="ml-6 button">Search</button>
+                </div>
+
             </div>
 
             <div id="movie-tag-field" class="field is-grouped is-grouped-multiline ml-6">
             </div>
 
-            <!-- Search button -->
-            <div>
-                <button id="movieSearch" class="ml-6 button">Search</button>
-            </div>
-
-
+            <!-- Movie info container -->
             <div class="container">
-
-                <!-- Movie info container -->
                 <div class="box m-6 columns">
                     <div class="column is-half is-gapless">
-                        <img id="movieImage" >
+                        <img id="movieImage">
                     </div>
                     <div>
                         <h1 id="movieName" name="movieName"></h2>
@@ -102,7 +99,7 @@
         </section>
 
         <!-- Munchie Side -->
-        <section class="column is-gapless">
+        <section class="column is-gapless is-half">
 
             <div class="field has-addons ml-6 mr-4 mt-4">
                 <div class="control">
@@ -144,19 +141,18 @@
                     Clear
                   </a>
                 </div>
+
+                <div>
+                    <button id="recipeSearch" class="ml-6 button">Search</button>
+                </div>
+
             </div>
 
             <div id="munchie-tag-field" class="field is-grouped is-grouped-multiline ml-6">
             </div>
 
-            <!-- Search Button -->
-            <div>
-                <button id="recipeSearch" class="ml-6 button">Search</button>
-            </div>
-
+            <!-- Food info container -->
             <div class="container">
-
-                <!-- Food info container -->
                 <div class="box m-6 columns">
                     <div class="column is-half is-gapless">
                         <img id="recipeImage">
@@ -165,6 +161,8 @@
                         <h1 id="recipeName"></h1>
                         <p id="ingredientDescription"></p>
                     </div>    
+
+                    
                 </div>
 
                 <!-- skip button to randomize new food -->
@@ -175,9 +173,13 @@
 
         </section>
 
+        <!-- Save Button that saves combo to local storage -->
+        <div class="column is-narrow">
+            <button class="button">SAVE</button>
+        </div>
+
     </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/script.js"></script>
 </body>
 </html>
