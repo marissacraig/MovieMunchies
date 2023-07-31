@@ -72,11 +72,7 @@ async function searchMoviesByGenreAndService(genreId, streamingServices) {
 // MOVIE SEARCH EVENT
 movieSearchBtn.addEventListener('click', function (event) {
   event.preventDefault();
-<<<<<<< HEAD
-  deleteMovieText ();
-=======
   deleteMovieText();
->>>>>>> c729749ce004798c457b32b7afc724728720962f
   const selectedCategory = document.getElementById('movie-tag-input').value;
   if (!selectedCategory) {
     alert("Please select a genre.")
@@ -175,11 +171,7 @@ async function searchRandomRecipeByCuisine(cuisineType) {
 // RECIPE SEARCH EVENT
 recipeSearchBtn.addEventListener('click', function (event) {
   event.preventDefault();
-<<<<<<< HEAD
-  deleteMunchieText ();
-=======
   deleteMunchieText();
->>>>>>> c729749ce004798c457b32b7afc724728720962f
   const selectedCuisine = document.getElementById('munchie-tag-input').value;
   if (!selectedCuisine) {
     alert("Please select a cuisine.");
