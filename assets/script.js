@@ -369,4 +369,3 @@ save.addEventListener('click', function (event) {
     saveMovie();
     saveMunchie();
 })
-
