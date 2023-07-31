@@ -81,14 +81,15 @@
 
             <!-- Movie info container -->
             <div class="container">
+           
                 <div class="box m-6 columns">
                     <div class="column is-half is-gapless">
                         <img id="movieImage">
                     </div>
                     <div>
-                        <h1 id="movieName" name="movieName"></h2>
+                        <h1 id="movieName" class="is-bold is-size-3" name="movieName"></h2>
                         <p id="movieDescription"></p>
-                        <p id="movieText" class="is-size-3">Use the searchbox to look up any movie category and we'll generate a random movie for you to watch using that tag!</p>
+                        <p id="movieText" class="is-size-4">Use the searchbox to look up any movie category and we'll generate a random movie for you to watch using that tag!</p>
                     </div>    
                 </div>
 
@@ -154,14 +155,15 @@
 
             <!-- Food info container -->
             <div class="container">
+                
                 <div class="box m-6 columns">
                     <div class="column is-half is-gapless">
                         <img id="recipeImage">
                     </div>
                     <div>
-                        <h1 id="recipeName"></h1>
+                        <h1 id="recipeName" class="is-bold is-size-3"></h1>
                         <p id="ingredientDescription"></p>
-                        <p id="munchieText" class="is-size-3">Use the searchbox to look up any food category and we'll generate a random recipe for you to make using that tag!</p>
+                        <p id="munchieText" class="is-size-4">Use the searchbox to look up any food category and we'll generate a random recipe for you to make using that tag!</p>
                     </div>    
 
                     
@@ -177,7 +179,7 @@
 
         <!-- Save Button that saves combo to local storage -->
         <div class="column is-narrow">
-            <button class="button">SAVE</button>
+            <button id="saveBtn" class="button">SAVE</button>
         </div>
 
     </main>

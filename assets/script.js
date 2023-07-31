@@ -72,7 +72,11 @@ async function searchMoviesByGenreAndService(genreId, streamingServices) {
 // MOVIE SEARCH EVENT
 movieSearchBtn.addEventListener('click', function (event) {
   event.preventDefault();
+<<<<<<< HEAD
   deleteMovieText ();
+=======
+  deleteMovieText();
+>>>>>>> c729749ce004798c457b32b7afc724728720962f
   const selectedCategory = document.getElementById('movie-tag-input').value;
   if (!selectedCategory) {
     alert("Please select a genre.")
@@ -171,7 +175,11 @@ async function searchRandomRecipeByCuisine(cuisineType) {
 // RECIPE SEARCH EVENT
 recipeSearchBtn.addEventListener('click', function (event) {
   event.preventDefault();
+<<<<<<< HEAD
   deleteMunchieText ();
+=======
+  deleteMunchieText();
+>>>>>>> c729749ce004798c457b32b7afc724728720962f
   const selectedCuisine = document.getElementById('munchie-tag-input').value;
   if (!selectedCuisine) {
     alert("Please select a cuisine.");
@@ -342,3 +350,30 @@ function deleteMunchieText() {
   
     munchieTextEl.setAttribute('class', 'is-hidden');
 }
+
+var save = document.getElementById('saveBtn');
+
+function saveMovie() {
+    var movieTitles = JSON.parse(localStorage.getItem('movieTitles')) || [];
+    console.log(movieTitles);
+    movieTitles.push(movieNameEl.textContent);
+    console.log(movieTitles);
+    localStorage.setItem('movieTitles', JSON.stringify(movieTitles));
+    console.log(localStorage.getItem('movieTitles'));
+}
+
+function saveMunchie() {
+    var munchieTitles = JSON.parse(localStorage.getItem('munchieTitles')) || [];
+    console.log(munchieTitles);
+    munchieTitles.push(recipeNameEl.textContent);
+    console.log(munchieTitles);
+    localStorage.setItem('munchieTitles', JSON.stringify(munchieTitles));
+    console.log(localStorage.getItem('munchieTitles'));
+}
+
+
+
+save.addEventListener('click', function (event) {
+    saveMovie();
+    saveMunchie();
+})
