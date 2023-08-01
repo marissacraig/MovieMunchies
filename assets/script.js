@@ -297,69 +297,6 @@ function createMovieTag(message) {
 
 }
 
-// // When add button is clicked, create movie tag with the input text from movieTagInput
-// movieAddTag.addEventListener("click", () => {
-//     if (movieTagInput.value !== "") {
-//         createMovieTag(movieTagInput.value);
-//     }
-//     // Clear movieTagInput
-//     movieTagInput.value = "";
-// });
-
-// // Same as above except with enter key pressed to add tag
-// movieTagInput.addEventListener("keyup", (event) => {
-//     if ((event.keyCode === 13) && (movieTagInput.value !== "")) {
-//         createMovieTag(movieTagInput.value);
-//         movieTagInput.value = "";
-//     }
-// });
-
-
-
-// // Code for food search tags
-// const munchieTagField = document.getElementById("munchie-tag-field");
-// const munchieAddTag = document.getElementById("munchie-add-tag");
-// const munchieTagInput = document.getElementById("munchie-tag-input");
-
-// function createMunchieTag(message) {
-//     const controlDiv = document.createElement("div");
-//     controlDiv.classList.add("control");
-
-//     const tags = document.createElement("div");
-//     tags.classList.add("tags", "has-addons");
-
-//     const tagContent = document.createElement("a");
-//     tagContent.classList.add("tag", "is-link");
-//     tagContent.innerText = message;
-
-//     const tagDelete = document.createElement("a");
-//     tagDelete.classList.add("tag", "is-delete");
-//     tagDelete.addEventListener("click", (event) => {
-//         munchieTagField.removeChild(controlDiv);
-//     });
-
-//     // finally nest all the tags together
-//     tags.appendChild(tagContent);
-//     tags.appendChild(tagDelete);
-//     controlDiv.appendChild(tags);
-//     munchieTagField.appendChild(controlDiv);
-
-// }
-
-// munchieAddTag.addEventListener("click", () => {
-//     if (munchieTagInput.value !== "") {
-//         createMunchieTag(munchieTagInput.value);
-//     }
-//     munchieTagInput.value = "";
-// });
-
-// munchieTagInput.addEventListener("keyup", (event) => {
-//     if ((event.keyCode === 13) && (munchieTagInput.value !== "")) {
-//         createMunchieTag(munchieTagInput.value);
-//         munchieTagInput.value = "";
-//     }
-// });
-
 
 function deleteMovieText() {
   var movieTextEl = document.querySelector("#movieText");
@@ -394,8 +331,67 @@ function saveMunchie() {
 }
 
 
+function saveCombo() {
+  const movieName = document.getElementById('movieName').textContent;
+  const recipeName = document.getElementById('recipeName').textContent;
+  const movieDescription = document.getElementById('movieDescription').textContent;
+  const recipeIngredients = document.getElementById('ingredientDescription').textContent;
+  const movieImageEl = document.querySelector('#movieImage');
+  const movieImg = movieImageEl.getAttribute('src');
+  const recipeImageEl = document.querySelector('#recipeImage');
+  const recipeImg = recipeImageEl.getAttribute('src');
+  var tally = 0; 
+  // if tally does not exist yet, then just use prior set 0
+  if (localStorage.getItem('tally') !== null) {
+      var intValue = localStorage.getItem('tally');
+      tally = parseInt(intValue);
+  }
+
+  if (movieName === '' && recipeName === '') {
+    alert('Please search for a movie or recipe.');
+    return;
+  }
+
+  if (tally !== 0) {
+    var lastSavedData = localStorage.getItem('combo' + tally.toString());
+    const parsedData = JSON.parse(lastSavedData);
+    if (parsedData.movieName === movieName && parsedData.recipeName === recipeName) {
+      alert('This combination has already been saved');
+      return;
+    }
+  }
+
+  if (tally === 25) {
+    clear();
+    var intValue = localStorage.getItem('tally');
+    tally = parseInt(intValue);
+  }
+
+  const combo = {
+    movieName: movieName,
+    recipeName: recipeName,
+    movieDescription: movieDescription,
+    recipeIngredients: recipeIngredients,
+    movieImg: movieImg,
+    recipeImg: recipeImg
+  };
+  const comboJSON = JSON.stringify(combo);
+  console.log(combo);
+  console.log(comboJSON);
+  tally = tally + 1;
+  localStorage.setItem(('combo' + tally.toString()), comboJSON);
+  localStorage.setItem('tally', tally);
+}
+
 
 save.addEventListener('click', function (event) {
-  saveMovie();
-  saveMunchie();
+  event.preventDefault();
+  saveCombo();
 })
+
+
+function clear() {
+  localStorage.clear()
+  var tally = 0;
+  localStorage.setItem('tally', tally);
+}
