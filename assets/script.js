@@ -329,3 +329,42 @@ function createMovieTag(message) {
 //     }
 // });
 
+
+function deleteMovieText() {
+  var movieTextEl = document.querySelector("#movieText");
+
+  movieTextEl.setAttribute('class', 'is-hidden');
+}
+
+function deleteMunchieText() {
+  var munchieTextEl = document.querySelector("#munchieText");
+
+  munchieTextEl.setAttribute('class', 'is-hidden');
+}
+
+var save = document.getElementById('saveBtn');
+
+function saveMovie() {
+  var movieTitles = JSON.parse(localStorage.getItem('movieTitles')) || [];
+  console.log(movieTitles);
+  movieTitles.push(movieNameEl.textContent);
+  console.log(movieTitles);
+  localStorage.setItem('movieTitles', JSON.stringify(movieTitles));
+  console.log(localStorage.getItem('movieTitles'));
+}
+
+function saveMunchie() {
+  var munchieTitles = JSON.parse(localStorage.getItem('munchieTitles')) || [];
+  console.log(munchieTitles);
+  munchieTitles.push(recipeNameEl.textContent);
+  console.log(munchieTitles);
+  localStorage.setItem('munchieTitles', JSON.stringify(munchieTitles));
+  console.log(localStorage.getItem('munchieTitles'));
+}
+
+
+
+save.addEventListener('click', function (event) {
+  saveMovie();
+  saveMunchie();
+})
