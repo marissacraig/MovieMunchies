@@ -77,15 +77,18 @@ async function searchMoviesByGenreAndService(genreId, streamingServices) {
 // MOVIE SEARCH EVENT
 movieSearchBtn.addEventListener('click', function (event) {
   event.preventDefault();
-  deleteMovieText();
   const selectedCategory = document.getElementById('movie-tag-input').value;
   if (!selectedCategory) {
-    alert("Please select a genre.")
+    alert("Please select a genre.");
+    return;
   } else {
     for (var i = 0; i < listGenres.length; i+=2) {
       if (listGenres[i] === selectedCategory) {
         var number = listGenres[i + 1];
         searchMoviesByGenreAndService(number, ['netflix', 'prime.buy', 'hulu.addon.hbo', 'peacock.free']);
+        return;
+      } else if (i === (listGenres.length - 2)) {
+        alert("Invalid genre. Please select a valid genre.");
         return;
       }
     }
@@ -99,14 +102,19 @@ movieSkipBtn.addEventListener('click', function (event) {
   const selectedCategory = document.getElementById('movie-tag-input').value;
   if (!movieImageEl.src) {
     alert('Please search for a movie first.');
+    return;
   } else {
     if (!selectedCategory) {
-      alert('Please search for the new genre first.')
+      alert('Please search for the new genre first.');
+      return;
     } else {
       for (var i = 0; i < listGenres.length; i += 2) {
         if (listGenres[i] === selectedCategory) {
           var number = listGenres[i + 1];
           searchMoviesByGenreAndService(number, ['netflix', 'prime.buy', 'hulu.addon.hbo', 'peacock.free']);
+          return;
+        } else if (i === (listGenres.length - 2)) {
+          alert("Invalid genre. Please select a valid genre.");
           return;
         }
       }
