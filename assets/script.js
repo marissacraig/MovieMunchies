@@ -19,6 +19,11 @@ var listGenres = ['Biography', 1, 'Film Noir', 2, 'Musical', 4, 'Sport', 5, 'Sho
   'Crime', 80, 'Documentary', 99, 'Mystery', 9648, 'Family', 10751, 'War', 10752];
 
 
+var cuisines = ['African', 'American', 'British', 'Cajun', 'Caribbean', 'Chinese', 'Eastern European', 'European',
+  'French', 'German', 'Greek', 'Indian', 'Irish', 'Italian', 'Japanese', 'Jewish', 'Korean', 'Latin American',
+  'Mediterranean', 'Mexican', 'Middle Eastern', 'Nordic', 'Southern', 'Spanish', 'Thai', 'Vietnamese'];
+
+
 // THIS IS THE ONE WE WILL USE BELOW
 async function searchMoviesByGenreAndService(genreId, streamingServices) {
   const baseUrl = 'https://streaming-availability.p.rapidapi.com/v2/search/basic';
