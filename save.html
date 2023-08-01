@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,64 +9,74 @@
     <link rel="stylesheet" href="./assets/style.css" />
 </head>
 
-<body class="hero is-mobile has-background-grey">
+<body class="hero is-fullheight is-mobile has-background-grey">
     <!-- Header -->
     <header class="hero-head">
-        <nav class="navbar" role="navigation">
+        <nav class="navbar m-4">
             <div class="container">
                 <!-- Navbar -->
-              <div class="navbar-brand">
+                <div class="navbar-brand">
                     <!-- Logo -->
-                <a class="image is-128x128 mt-4" href="index.html">
-                  <img src="Photos/Movie Munchies-1.png" alt="Logo">
-                </a>
-              </div>
-              <div class="navbar-menu">
-                <div class="navbar-end buttons mt-4">
-                  <a class="navbar-item button is-inverted" href="index.html" >
-                    Home
-                  </a>
-                  <a class="navbar-item button is-inverted" href="save.html">
-                    Saved MM
-                  </a>
+                    <a class="image is-128x128" href="index.html">
+                        <img src="Photos/Movie Munchies-1.png" alt="Logo">
+                    </a>
+                    <span class="navbar-burger" data-target="navbarMenuHeroB">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
                 </div>
-              </div>
+                <div id="navbarMenuHeroB" class="navbar-menu">
+                    <div class="navbar-end">
+                        <span class="navbar-item">
+                            <a class="button" href="index.html">
+                                Home
+                            </a>
+                        </span>
+                        <span class="navbar-item">
+                            <a class="button" href="save.html">
+                                Saved MM
+                            </a>
+                        </span>
+                    </div>
+                </div>
             </div>
-          </nav>
+        </nav>
     </header>
 
-    <main class="hero-body columns is-mobile is-centered">
+    <main class="hero-body columns is-centered">
         <section class="column is-gapless is-half">
-            <div class="card">
+            <div class="container">
                 <!-- Movie info container -->
-                <div class="card m-6 columns">
+                <div class="box m-6 columns">
                     <div class="column is-half is-gapless">
-                        <img src="Photos/cat-placeholder.jpg">
+                        <img id="" src="Photos/hero.webp" alt="movie-placeholder">
                     </div>
                     <div>
-                        <p>hello world</p>
-                    </div>    
+                        <p></p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="column is-gapless">
-            <div class="card">
+        <section class="column is-gapless is-half">
+            <div class="container">
                 <!-- Food info container -->
-                <div class="card m-6 columns">
+                <div class="box m-6 columns">
                     <div class="column is-half is-gapless">
-                        <img src="Photos/cat-placeholder.jpg">
+                        <img id="" src="Photos/food1.jpg" alt="food-placeholder">
                     </div>
                     <div>
-                        <p>hello world</p>
-                    </div>    
+                        <p></p>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
-<footer class="hero-footer is-mobile">
+    <footer class="hero-foot">
 
-</footer>
-    <script src="./assets/save.js"></script>
+    </footer>
+    <script src="./assets/script.js"></script>
 </body>
+
 </html>
