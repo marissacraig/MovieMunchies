@@ -184,12 +184,19 @@ async function searchRandomRecipeByCuisine(cuisineType) {
 // RECIPE SEARCH EVENT
 recipeSearchBtn.addEventListener('click', function (event) {
   event.preventDefault();
-  deleteMunchieText();
   const selectedCuisine = document.getElementById('munchie-tag-input').value;
   if (!selectedCuisine) {
     alert("Please select a cuisine.");
-  } else {
-    searchRandomRecipeByCuisine(selectedCuisine);
+    return;
+  } 
+  for (var i = 0; i < cuisines.length; i++) {
+    if (selectedCuisine === cuisines[i]) {
+      searchRandomRecipeByCuisine(selectedCuisine);
+      return;
+    } else if (i === (cuisines.length - 1)) {
+      alert("Invalid cuisine. Please select a valid cuisine.");
+      return;
+    }
   }
 })
 
@@ -200,11 +207,20 @@ recipeSkipBtn.addEventListener('click', function (event) {
   const selectedCuisine = document.getElementById('munchie-tag-input').value;
   if (!recipeImageEl.src) {
     alert('Please search for a recipe first.');
+    return;
   } else {
     if (!selectedCuisine) {
       alert('Please search for the new cuisine first.');
-    } else {
-      searchRandomRecipeByCuisine(selectedCuisine);
+      return;
+    }
+    for (var i = 0; i < cuisines.length; i++) {
+      if (selectedCuisine === cuisines[i]) {
+        searchRandomRecipeByCuisine(selectedCuisine);
+        return;
+      } else if (i === (cuisines.length - 1)) {
+        alert("Invalid cuisine. Please select a valid cuisine.");
+        return;
+      }
     }
   }
 })
