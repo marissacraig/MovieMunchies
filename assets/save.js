@@ -1,5 +1,3 @@
-var retrieveSaved = localStorage.key();
-
 
 function listMovies() {
     var movieTitles = JSON.parse(localStorage.getItem('movieTitles'));
