@@ -288,114 +288,53 @@ function createMovieTag(message) {
     tagDelete.addEventListener("click", (event) => {
         movieTagField.removeChild(controlDiv);
     });
-
-    // finally nest all the tags together
-    tags.appendChild(tagContent);
-    tags.appendChild(tagDelete);
-    controlDiv.appendChild(tags);
-    movieTagField.appendChild(controlDiv);
-
 }
 
-// // When add button is clicked, create movie tag with the input text from movieTagInput
-// movieAddTag.addEventListener("click", () => {
-//     if (movieTagInput.value !== "") {
-//         createMovieTag(movieTagInput.value);
-//     }
-//     // Clear movieTagInput
-//     movieTagInput.value = "";
-// });
-
-// // Same as above except with enter key pressed to add tag
-// movieTagInput.addEventListener("keyup", (event) => {
-//     if ((event.keyCode === 13) && (movieTagInput.value !== "")) {
-//         createMovieTag(movieTagInput.value);
-//         movieTagInput.value = "";
-//     }
-// });
+getApi(movieUrl);
+getApi(foodUrl);
 
 
+function clear() {
+  localStorage.clear()
+  var tally = 0;
+  localStorage.setItem('tally', tally);
+}
 
-// // Code for food search tags
-// const munchieTagField = document.getElementById("munchie-tag-field");
-// const munchieAddTag = document.getElementById("munchie-add-tag");
-// const munchieTagInput = document.getElementById("munchie-tag-input");
+// function deleteMovieText() {
+//   var movieTextEl = document.querySelector("#movieText");
 
-// function createMunchieTag(message) {
-//     const controlDiv = document.createElement("div");
-//     controlDiv.classList.add("control");
-
-//     const tags = document.createElement("div");
-//     tags.classList.add("tags", "has-addons");
-
-//     const tagContent = document.createElement("a");
-//     tagContent.classList.add("tag", "is-link");
-//     tagContent.innerText = message;
-
-//     const tagDelete = document.createElement("a");
-//     tagDelete.classList.add("tag", "is-delete");
-//     tagDelete.addEventListener("click", (event) => {
-//         munchieTagField.removeChild(controlDiv);
-//     });
-
-//     // finally nest all the tags together
-//     tags.appendChild(tagContent);
-//     tags.appendChild(tagDelete);
-//     controlDiv.appendChild(tags);
-//     munchieTagField.appendChild(controlDiv);
-
+//   movieTextEl.setAttribute('class', 'is-hidden');
 // }
 
-// munchieAddTag.addEventListener("click", () => {
-//     if (munchieTagInput.value !== "") {
-//         createMunchieTag(munchieTagInput.value);
-//     }
-//     munchieTagInput.value = "";
-// });
+// function deleteMunchieText() {
+//   var munchieTextEl = document.querySelector("#munchieText");
 
-// munchieTagInput.addEventListener("keyup", (event) => {
-//     if ((event.keyCode === 13) && (munchieTagInput.value !== "")) {
-//         createMunchieTag(munchieTagInput.value);
-//         munchieTagInput.value = "";
-//     }
-// });
+//   munchieTextEl.setAttribute('class', 'is-hidden');
+// }
 
+// var save = document.getElementById('saveBtn');
 
-function deleteMovieText() {
-  var movieTextEl = document.querySelector("#movieText");
+// function saveMovie() {
+//   var movieTitles = JSON.parse(localStorage.getItem('movieTitles')) || [];
+//   console.log(movieTitles);
+//   movieTitles.push(movieNameEl.textContent);
+//   console.log(movieTitles);
+//   localStorage.setItem('movieTitles', JSON.stringify(movieTitles));
+//   console.log(localStorage.getItem('movieTitles'));
+// }
 
-  movieTextEl.setAttribute('class', 'is-hidden');
-}
-
-function deleteMunchieText() {
-  var munchieTextEl = document.querySelector("#munchieText");
-
-  munchieTextEl.setAttribute('class', 'is-hidden');
-}
-
-var save = document.getElementById('saveBtn');
-
-function saveMovie() {
-  var movieTitles = JSON.parse(localStorage.getItem('movieTitles')) || [];
-  console.log(movieTitles);
-  movieTitles.push(movieNameEl.textContent);
-  console.log(movieTitles);
-  localStorage.setItem('movieTitles', JSON.stringify(movieTitles));
-  console.log(localStorage.getItem('movieTitles'));
-}
-
-function saveMunchie() {
-  var munchieTitles = JSON.parse(localStorage.getItem('munchieTitles')) || [];
-  console.log(munchieTitles);
-  munchieTitles.push(recipeNameEl.textContent);
-  console.log(munchieTitles);
-  localStorage.setItem('munchieTitles', JSON.stringify(munchieTitles));
-  console.log(localStorage.getItem('munchieTitles'));
-}
+// function saveMunchie() {
+//   var munchieTitles = JSON.parse(localStorage.getItem('munchieTitles')) || [];
+//   console.log(munchieTitles);
+//   munchieTitles.push(recipeNameEl.textContent);
+//   console.log(munchieTitles);
+//   localStorage.setItem('munchieTitles', JSON.stringify(munchieTitles));
+//   console.log(localStorage.getItem('munchieTitles'));
+// }
 
 
 
-save.addEventListener('click', function (event) {
-  saveMovie();
-  saveMunchie();
-})
+// save.addEventListener('click', function (event) {
+//   saveMovie();
+//   saveMunchie();
+// })
