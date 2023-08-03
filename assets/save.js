@@ -45,10 +45,17 @@ function reload() {
     for (var i = 1; i < tally + 1; i++) {
         const data = localStorage.getItem('combo' + i.toString());
         const combo = JSON.parse(data);
-        // to get movie name, combo.movieName
-        // to get recipe name, combo.recipeName
-        // to get movie description, combo.movieDescription
-        // to get ingredients, combo.recipeIngredients
+        var liEl = document.createElement('li');
+        liEl.textContent = combo.movieName + " / " + combo.recipeName;
+        var movieTitleEl = document.getElementById("movieTitle");
+        movieTitleEl.textContent(combo.movieName);
+        var recipeNameEl = document.getElementById("recipeName");
+        recipeNameEl.textContent(combo.recipeName);
+        var movieDescriptionEl = document.getElementById("movieDescription");
+        movieDescriptionEl.textContent(combo.movieDescription);
+        var recipeIngredientsEl = document.getElementById("recipeIngredients");
+        recipeIngredientsEl.textContent(combo.recipeIngredients);
+        
         // to get movie image link, combo.movieImg
         // to get recipe image link, combo.recipeImg
         console.log(combo);
