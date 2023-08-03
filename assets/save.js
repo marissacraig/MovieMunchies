@@ -73,12 +73,12 @@ column.appendChild(listItem);
 
     // Create a huge button
     const hugeButton = document.getElementById('button');
+    hugeButton.classList.add('button', 'is-primary', 'is-large', 'js-modal-trigger');
+    hugeButton.dataset.target.add('modal-trigger');
     hugeButton.textContent = movieName +' / '+ recipeName;
     hugeButton.setAttribute('id', combos[i]);
         const id = this.getAttribute('id');
         const data = localStorage.getItem(id);
-
-
     
     listItem.appendChild(hugeButton);
 
@@ -112,7 +112,7 @@ column.appendChild(listItem);
     });
     listItem.appendChild(deleteButton);
 
-    // Append the listItem to the corresponding column
+   
    
 
 

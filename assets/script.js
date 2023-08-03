@@ -290,8 +290,6 @@ function createMovieTag(message) {
     });
 }
 
-getApi(movieUrl);
-getApi(foodUrl);
 
 
 function clear() {
@@ -300,41 +298,45 @@ function clear() {
   localStorage.setItem('tally', tally);
 }
 
-// function deleteMovieText() {
-//   var movieTextEl = document.querySelector("#movieText");
+function deleteMovieText() {
+  var movieTextEl = document.querySelector("#movieText");
 
-//   movieTextEl.setAttribute('class', 'is-hidden');
-// }
+  movieTextEl.setAttribute('class', 'is-hidden');
+}
 
-// function deleteMunchieText() {
-//   var munchieTextEl = document.querySelector("#munchieText");
+function deleteMunchieText() {
+  var munchieTextEl = document.querySelector("#munchieText");
 
-//   munchieTextEl.setAttribute('class', 'is-hidden');
-// }
+  munchieTextEl.setAttribute('class', 'is-hidden');
+}
 
-// var save = document.getElementById('saveBtn');
+var save = document.getElementById('saveBtn');
 
-// function saveMovie() {
-//   var movieTitles = JSON.parse(localStorage.getItem('movieTitles')) || [];
-//   console.log(movieTitles);
-//   movieTitles.push(movieNameEl.textContent);
-//   console.log(movieTitles);
-//   localStorage.setItem('movieTitles', JSON.stringify(movieTitles));
-//   console.log(localStorage.getItem('movieTitles'));
-// }
+function saveMovie() {
+  var movieTitles = JSON.parse(localStorage.getItem('movieTitles')) || [];
+  console.log(movieTitles);
+  movieTitles.push(movieNameEl.textContent);
+  console.log(movieTitles);
+  localStorage.setItem('movieTitles', JSON.stringify(movieTitles));
+  console.log(localStorage.getItem('movieTitles'));
+}
 
-// function saveMunchie() {
-//   var munchieTitles = JSON.parse(localStorage.getItem('munchieTitles')) || [];
-//   console.log(munchieTitles);
-//   munchieTitles.push(recipeNameEl.textContent);
-//   console.log(munchieTitles);
-//   localStorage.setItem('munchieTitles', JSON.stringify(munchieTitles));
-//   console.log(localStorage.getItem('munchieTitles'));
-// }
+function saveMunchie() {
+  var munchieTitles = JSON.parse(localStorage.getItem('munchieTitles')) || [];
+  console.log(munchieTitles);
+  munchieTitles.push(recipeNameEl.textContent);
+  console.log(munchieTitles);
+  localStorage.setItem('munchieTitles', JSON.stringify(munchieTitles));
+  console.log(localStorage.getItem('munchieTitles'));
+}
 
 
 
-// save.addEventListener('click', function (event) {
-//   saveMovie();
-//   saveMunchie();
-// })
+save.addEventListener('click', function () {
+  saveMovie();
+  saveMunchie();
+})
+
+
+getApi(movieUrl);
+getApi(foodUrl);
