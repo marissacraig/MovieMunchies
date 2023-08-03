@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./assets/style.css" />
 </head>
 
-<body class="hero is-mobile has-background-grey is-fullheight">
+<body class="hero is-desktop has-background-grey is-fullheight">
     <header class="hero-head">
         <nav class="navbar" role="navigation">
             <div class="container">
@@ -33,149 +33,153 @@
           </nav>
     </header>
 
-    <main class="columns is-multiline is-mobile is-centered hero-body">
+    <main>
         <!-- Movie Side -->
-        <section class="column is-gapless is-half">
-        
-            <div class="field has-addons ml-6 mr-4 mt-4">
-                <div class="control">
-                    <!-- This will create a dropdown of all possible selections in the searchbar -->
-                    <!-- In list put id of datalist -->
-                  <input id="movie-tag-input" list="movie-genres" class="input column is-full" type="text" placeholder="Search movie categories">
-                  <datalist id="movie-genres">
-                        <!-- Placeholders to test how it works -->
-                        <option value="Action">
-                        <option value="Adventure">
-                        <option value="Animation">
-                        <option value="Biography">
-                        <option value="Comedy">
-                        <option value="Crime">
-                        <option value="Documentary">
-                        <option value="Drama">
-                        <option value="Family">
-                        <option value="Fantasy">
-                        <option value="Film Noir">
-                        <option value="History">
-                        <option value="Musical">
-                        <option value="Mystery">
-                        <option value="Short">
-                        <option value="Sport">
-                        <option value="Thriller">
-                        <option value="War">
-                    </datalist>
-                </div>
-                <div class="control">
-                  <a id="movie-clear-tag" class="button is-link">
-                    Clear
-                  </a>
-                </div>
-
-                <div>
-                    <button id="movieSearch" class="ml-6 button">Search</button>
-                </div>
-
-            </div>
-
-            <div id="movie-tag-field" class="field is-grouped is-grouped-multiline ml-6">
-            </div>
-
-            <!-- Movie info container -->
-            <div class="container">
-           
-                <div class="box m-6 columns">
-                    <div class="column is-half is-gapless">
-                        <img id="movieImage">
+        <div class="columns is-multiline is-desktop is-centered hero-body">
+            <section class="column is-gapless is-half">
+            
+                <div class="field has-addons ml-6 mr-4 mt-4">
+                    <div class="control">
+                        <!-- This will create a dropdown of all possible selections in the searchbar -->
+                        <!-- In list put id of datalist -->
+                    <input id="movie-tag-input" list="movie-genres" class="input column is-full" type="text" placeholder="Search movie categories">
+                    <datalist id="movie-genres">
+                            <!-- Placeholders to test how it works -->
+                            <option value="Action">
+                            <option value="Adventure">
+                            <option value="Animation">
+                            <option value="Biography">
+                            <option value="Comedy">
+                            <option value="Crime">
+                            <option value="Documentary">
+                            <option value="Drama">
+                            <option value="Family">
+                            <option value="Fantasy">
+                            <option value="Film Noir">
+                            <option value="History">
+                            <option value="Musical">
+                            <option value="Mystery">
+                            <option value="Short">
+                            <option value="Sport">
+                            <option value="Thriller">
+                            <option value="War">
+                        </datalist>
                     </div>
+                    <div class="control">
+                    <a id="movie-clear-tag" class="button is-link">
+                        Clear
+                    </a>
+                    </div>
+
                     <div>
-                        <h1 id="movieName" class="is-bold is-size-3" name="movieName"></h2>
-                        <p id="movieDescription"></p>
-                        <p id="movieText" class="is-size-4">Use the searchbox to look up any movie category and we'll generate a random movie for you to watch using that tag!</p>
-                    </div>    
+                        <button id="movieSearch" class="ml-6 button">Search</button>
+                    </div>
+
                 </div>
 
-                <!-- Skip button to randomize new movie -->
-                <div class="buttons is-centered">
-                    <button id="movieSkip" class="button">SKIP</button>
+                <div id="movie-tag-field" class="field is-grouped is-grouped-multiline ml-6">
                 </div>
-            </div>
-        </section>
+
+                <!-- Movie info container -->
+                <div class="container">
+            
+                    <div class="box m-6 columns">
+                        <div class="column is-half is-gapless">
+                            <img id="movieImage">
+                        </div>
+                        <div>
+                            <h1 id="movieName" class="is-bold is-size-3" name="movieName"></h2>
+                            <p id="movieDescription"></p>
+                            <p id="movieText" class="is-size-4">Use the searchbox to look up any movie category and we'll generate a random movie for you to watch using that tag!</p>
+                        </div>    
+                    </div>
+
+                    <!-- Skip button to randomize new movie -->
+                    <div class="buttons is-centered">
+                        <button id="movieSkip" class="button">SKIP</button>
+                    </div>
+                </div>
+            </section>
+        </div>
 
         <!-- Munchie Side -->
-        <section class="column is-gapless is-half">
+        <div class="columns is-multiline is-desktop is-centered hero-body">
+            <section class="column is-desktop is-gapless is-half">
 
-            <div class="field has-addons ml-6 mr-4 mt-4 column">
-                <div class="control">
-                    <!-- This will create a dropdown of all possible selections in the searchbar -->
-                    <!-- In list put id of datalist -->
-                  <input id="munchie-tag-input" list="munchie-genres" class="input column is-full" type="text" placeholder="Search food categories">
-                    <datalist id="munchie-genres">
-                        <!-- Placeholders to test how it works -->
-                        <option value="African">
-                        <option value="American">
-                        <option value="British">
-                        <option value="Cajun">
-                        <option value="Caribbean">
-                        <option value="Chinese">
-                        <option value="Eastern European">
-                        <option value="European">
-                        <option value="French">
-                        <option value="German">
-                        <option value="Greek">
-                        <option value="Indian">
-                        <option value="Irish">
-                        <option value="Italian">
-                        <option value="Japanese">
-                        <option value="Jewish">
-                        <option value="Korean">
-                        <option value="Latin American">
-                        <option value="Mediterranean">
-                        <option value="Mexican">
-                        <option value="Middle Eastern">
-                        <option value="Nordic">
-                        <option value="Southern">
-                        <option value="Spanish">
-                        <option value="Thai">
-                        <option value="Vietnamese">
-                    </datalist>
-                </div>
-                <div class="control">
-                  <a id="munchie-clear-tag" class="button is-link">
-                    Clear
-                  </a>
-                </div>
-
-                <div>
-                    <button id="recipeSearch" class="ml-6 button">Search</button>
-                </div>
-
-            </div>
-
-            <div id="munchie-tag-field" class="field is-grouped is-grouped-multiline ml-6">
-            </div>
-
-            <!-- Food info container -->
-            <div class="container">
-                
-                <div class="box m-6 columns">
-                    <div class="column is-half is-gapless">
-                        <img id="recipeImage">
+                <div class="field has-addons ml-6 mr-4 mt-4 column">
+                    <div class="control">
+                        <!-- This will create a dropdown of all possible selections in the searchbar -->
+                        <!-- In list put id of datalist -->
+                    <input id="munchie-tag-input" list="munchie-genres" class="input column is-full" type="text" placeholder="Search food categories">
+                        <datalist id="munchie-genres">
+                            <!-- Placeholders to test how it works -->
+                            <option value="African">
+                            <option value="American">
+                            <option value="British">
+                            <option value="Cajun">
+                            <option value="Caribbean">
+                            <option value="Chinese">
+                            <option value="Eastern European">
+                            <option value="European">
+                            <option value="French">
+                            <option value="German">
+                            <option value="Greek">
+                            <option value="Indian">
+                            <option value="Irish">
+                            <option value="Italian">
+                            <option value="Japanese">
+                            <option value="Jewish">
+                            <option value="Korean">
+                            <option value="Latin American">
+                            <option value="Mediterranean">
+                            <option value="Mexican">
+                            <option value="Middle Eastern">
+                            <option value="Nordic">
+                            <option value="Southern">
+                            <option value="Spanish">
+                            <option value="Thai">
+                            <option value="Vietnamese">
+                        </datalist>
                     </div>
+                    <div class="control">
+                    <a id="munchie-clear-tag" class="button is-link">
+                        Clear
+                    </a>
+                    </div>
+
                     <div>
-                        <h1 id="recipeName" class="is-bold is-size-3"></h1>
-                        <p id="ingredientDescription"></p>
-                        <p id="munchieText" class="is-size-4">Use the searchbox to look up any food category and we'll generate a random recipe for you to make using that tag!</p>
-                    </div>    
+                        <button id="recipeSearch" class="ml-6 button">Search</button>
+                    </div>
 
+                </div>
+
+                <div id="munchie-tag-field" class="field is-grouped is-grouped-multiline ml-6">
+                </div>
+
+                <!-- Food info container -->
+                <div class="container">
                     
+                    <div class="box m-6 columns">
+                        <div class="column is-half is-gapless">
+                            <img id="recipeImage">
+                        </div>
+                        <div>
+                            <h1 id="recipeName" class="is-bold is-size-3"></h1>
+                            <p id="ingredientDescription"></p>
+                            <p id="munchieText" class="is-size-4">Use the searchbox to look up any food category and we'll generate a random recipe for you to make using that tag!</p>
+                        </div>    
+
+                        
+                    </div>
+
+                    <!-- skip button to randomize new food -->
+                    <div class="buttons is-centered">
+                        <button id="recipeSkip" class="button">SKIP</button>
+                    </div>
                 </div>
 
-                <!-- skip button to randomize new food -->
-                <div class="buttons is-centered">
-                    <button id="recipeSkip" class="button">SKIP</button>
-                </div>
-            </div>
-
-        </section>
+            </section>
+        </div>
 
         <!-- Save Button that saves combo to local storage -->
         <div class="column is-narrow">
