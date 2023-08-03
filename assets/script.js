@@ -5,6 +5,7 @@ var movieImageEl = document.querySelector('#movieImage');
 var movieNameEl = document.getElementById('movieName');
 var movieDescriptionEl = document.getElementById('movieDescription');
 var movieGenreEl = document.getElementById('movie-tag-field');
+var movieTextEx = document.getElementById('movieText');
 
 var recipeClearBtn = document.querySelector('#munchie-clear-tag');
 var recipeSearchBtn = document.querySelector('#recipeSearch');
@@ -12,6 +13,7 @@ var recipeSkipBtn = document.querySelector('#recipeSkip');
 var recipeImageEl = document.querySelector('#recipeImage');
 var recipeNameEl = document.getElementById('recipeName');
 var recipeDescriptionEl = document.getElementById('ingredientDescription');
+var recipeTextEx = document.getElementById('munchieText');
 
 
 var listGenres = ['Biography', 1, 'Film Noir', 2, 'Musical', 4, 'Sport', 5, 'Short', 6, 'Adventure', 12, 
@@ -57,6 +59,7 @@ async function searchMoviesByGenreAndService(genreId, streamingServices) {
       const availableOn = Object.keys(randomMovie.streamingInfo).filter(service => randomMovie.streamingInfo[service] === true);
       movieImageEl.setAttribute('src', randomMovie.posterURLs.original);
       movieNameEl.textContent = randomMovie.title;
+      movieTextEx.textContent = '';
       movieDescriptionEl.textContent = randomMovie.overview;
       return {
         movieImage: randomMovie.posterURLs.original,
@@ -255,8 +258,9 @@ async function testRecipe(recipeId) {
     var ingredients = "";
     if (result.ingredients && result.ingredients.length > 0) {
       result.ingredients.forEach(ingredient => {
-        ingredients = ingredients + (`${ingredient.name} - ${ingredient.amount.metric.value} ${ingredient.amount.metric.unit} \n`);
+        ingredients = ingredients + (`${ingredient.name} - ${ingredient.amount.metric.value} ${ingredient.amount.metric.unit}, \n`);
       });
+      recipeTextEx.textContent = '';
       recipeDescriptionEl.innerHTML = ingredients.replace(/\n/g, '<br>');
     } else {
       console.log(`No ingredients found for the recipe with ID: ${recipeId}`);
@@ -312,24 +316,6 @@ function deleteMunchieText() {
 
 var save = document.getElementById('saveBtn');
 
-function saveMovie() {
-  var movieTitles = JSON.parse(localStorage.getItem('movieTitles')) || [];
-  console.log(movieTitles);
-  movieTitles.push(movieNameEl.textContent);
-  console.log(movieTitles);
-  localStorage.setItem('movieTitles', JSON.stringify(movieTitles));
-  console.log(localStorage.getItem('movieTitles'));
-}
-
-function saveMunchie() {
-  var munchieTitles = JSON.parse(localStorage.getItem('munchieTitles')) || [];
-  console.log(munchieTitles);
-  munchieTitles.push(recipeNameEl.textContent);
-  console.log(munchieTitles);
-  localStorage.setItem('munchieTitles', JSON.stringify(munchieTitles));
-  console.log(localStorage.getItem('munchieTitles'));
-}
-
 
 function saveCombo() {
   const movieName = document.getElementById('movieName').textContent;
@@ -340,12 +326,21 @@ function saveCombo() {
   const movieImg = movieImageEl.getAttribute('src');
   const recipeImageEl = document.querySelector('#recipeImage');
   const recipeImg = recipeImageEl.getAttribute('src');
-  var tally = 0; 
+  var tally = 0;
   // if tally does not exist yet, then just use prior set 0
   if (localStorage.getItem('tally') !== null) {
       var intValue = localStorage.getItem('tally');
       tally = parseInt(intValue);
   }
+
+  var combos = [];
+  if (tally !== 0) {
+    const storedCombo = localStorage.getItem('combos');
+    const parsedData = JSON.parse(storedCombo);
+    combos = parsedData;
+}
+
+  if (localStorage.getItem('combos') )
 
   if (movieName === '' && recipeName === '') {
     alert('Please search for a movie or recipe.');
@@ -353,9 +348,10 @@ function saveCombo() {
   }
 
   if (tally !== 0) {
-    var lastSavedData = localStorage.getItem('combo' + tally.toString());
+    var id = movieName + recipeName;
+    var lastSavedData = localStorage.getItem(id);
     const parsedData = JSON.parse(lastSavedData);
-    if (parsedData.movieName === movieName && parsedData.recipeName === recipeName) {
+    if (localStorage.getItem(id) !== null) {
       alert('This combination has already been saved');
       return;
     }
@@ -367,20 +363,29 @@ function saveCombo() {
     tally = parseInt(intValue);
   }
 
+  const formattedIngredients = recipeIngredients.replace(/\n/g, ',');
   const combo = {
     movieName: movieName,
     recipeName: recipeName,
     movieDescription: movieDescription,
-    recipeIngredients: recipeIngredients,
+    recipeIngredients: formattedIngredients,
     movieImg: movieImg,
     recipeImg: recipeImg
   };
   const comboJSON = JSON.stringify(combo);
-  console.log(combo);
-  console.log(comboJSON);
   tally = tally + 1;
-  localStorage.setItem(('combo' + tally.toString()), comboJSON);
+
+  var id = movieName + recipeName;
+  localStorage.setItem(id, comboJSON);
   localStorage.setItem('tally', tally);
+
+  if (combos.length === 0) {
+    combos = [id];
+  } else {
+    combos.push(id);
+  }
+  var combosString = JSON.stringify(combos);
+  localStorage.setItem('combos', combosString);
 }
 
 
@@ -394,4 +399,9 @@ function clear() {
   localStorage.clear()
   var tally = 0;
   localStorage.setItem('tally', tally);
+  var combos = [];
+  var combosString = JSON.stringify(combos);
+  localStorage.setItem('combos', combosString);
 }
+
+// clear();
