@@ -45,11 +45,10 @@
     </header>
 
     <main class="hero-body columns is-mobile is-centered hero is-fullheight">
-        <ol id="movieTitles" class="column">
+        <ol id="movieTitles" class="column is-centered">
             <h2 class="is-size-4 has-text-white mb-3">Saved Movie Munchies</h2>
             <li>
-                <button class="js-modal-trigger is-success" data-target="modal-trigger">
-                    <p>Movie Name / Recipe Name</p>
+                <button id="column0" class="js-modal-trigger is-success" data-target="modal-trigger">
                   </button>
             </li>
         </ol>
@@ -61,16 +60,16 @@
                     <button class="delete" aria-label="close"></button>
                 </header>
                 <section class="modal-card-body">
-                    <h1 id="movieTitle" class="modal-card-title">Movie Title</h1>
+                    <h1 id="movieName" class="modal-card-title">Movie Title</h1>
                     <p class="image is-4by3">
-                        <img src="" alt="Movie Image">
+                        <img id="movieImage" src="" alt="Movie Image">
                     </p>
                     <p id="movieDescription"></p>
                     <h1 id="recipeName" class="modal-card-title">Recipe Name</h1>
                     <p class="image is-4by3">
-                        <img src="" alt="Recipe Image">
+                        <img id="recipeImage" src="" alt="Recipe Image">
                     </p>
-                    <p id="recipeIngredients"></p>
+                    <p id="ingredientDescription"></p>
                 </section>
                 <footer class="modal-card-foot">
                     <button class="button">Cancel</button>
@@ -79,6 +78,7 @@
             </section>
         </div>
     </main>
+
 
     <script src="./assets/save.js"></script>
 </body>
