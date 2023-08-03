@@ -46,26 +46,40 @@
 
     <main class="hero-body columns is-mobile is-centered hero is-fullheight">
         <ol id="movieTitles" class="column">
-            <h2 class="is-size-4 has-text-white mb-3">Saved Movies</h2>
+            <h2 class="is-size-4 has-text-white mb-3">Saved Movie Munchies</h2>
+            <li>
+                <button class="js-modal-trigger is-success" data-target="modal-trigger">
+                    <p>Movie Name / Recipe Name</p>
+                  </button>
+            </li>
         </ol>
-
-        <section class="column is-gapless">
-            <div class="card">
-                <!-- Food info container -->
-                <div class="card m-6 columns">
-                    <div class="column is-half is-gapless">
-                        <img src="Photos/cat-placeholder.jpg">
-                    </div>
-                    <div>
-                        <p>hello world</p>
-                    </div>    
+        <div>
+            <section id="modal-trigger" class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                    <header class="modal-card-head">
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <h1 class="modal-card-title">Movie Title</h1>
+                    <p class="image is-4by3">
+                        <img src="" alt="">
+                    </p>
+                    <p></p>
+                    <h1 class="modal-card-title">Recipe Name</h1>
+                    <p class="image is-4by3">
+                        <img src="" alt="">
+                    </p>
+                    <p></p>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button">Cancel</button>
+                  </footer>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
-<footer class="hero-footer is-mobile">
 
-    </footer>
     <script src="./assets/save.js"></script>
 </body>
 
