@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,47 +9,53 @@
     <link rel="stylesheet" href="./assets/style.css" />
 </head>
 
-<body class="hero is-mobile has-background-grey">
+<body class="hero is-fullheight is-mobile has-background-grey">
     <!-- Header -->
     <header class="hero-head">
-        <nav class="navbar" role="navigation">
+        <nav class="navbar m-4">
             <div class="container">
                 <!-- Navbar -->
-              <div class="navbar-brand">
+                <div class="navbar-brand">
                     <!-- Logo -->
-                <a class="image is-128x128 mt-4" href="index.html">
-                  <img src="Photos/Movie Munchies-1.png" alt="Logo">
-                </a>
-              </div>
-              <div class="navbar-menu">
-                <div class="navbar-end buttons mt-4">
-                  <a class="navbar-item button is-inverted" href="index.html" >
-                    Home
-                  </a>
-                  <a class="navbar-item button is-inverted" href="save.html">
-                    Saved MM
-                  </a>
+                    <a class="image is-128x128" href="index.html">
+                        <img src="Photos/Movie Munchies-1.png" alt="Logo">
+                    </a>
+                    <span class="navbar-burger" data-target="navbarMenuHeroB">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
                 </div>
-              </div>
+                <div id="navbarMenuHeroB" class="navbar-menu">
+                    <div class="navbar-end">
+                        <span class="navbar-item">
+                            <a class="button" href="index.html">
+                                Home
+                            </a>
+                        </span>
+                        <span class="navbar-item">
+                            <a class="button" href="save.html">
+                                Saved MM
+                            </a>
+                        </span>
+                    </div>
+                </div>
             </div>
-          </nav>
+        </nav>
     </header>
 
-    <main class="hero-body is-mobile hero is-fullheight">
-        <div class="columns">
-            <ol id="movieTitles" class="column is-half">
-                <h2 class="is-size-4 has-text-white mb-3">Saved Movies</h2>
-            </ol>
+    <main class="hero-body columns is-mobile is-centered hero is-fullheight">
 
-            <ol id="munchieTitles" class="column is-half">
-                <h2 class="is-size-4 has-text-white mb-3">Saved Recipes</h2>
-            </ol>
-        </div>
+        <h2 class="is-size-4 has-text-white mb-3">Saved Movies</h2>
+
+        <ol id="movieTitles" class="column is-centered"">
+            <div class="column " id="column0"></div>
+        </ol>
     </main>
-
 <footer class="hero-footer is-mobile">
 
-</footer>
+    </footer>
     <script src="./assets/save.js"></script>
 </body>
+
 </html>
