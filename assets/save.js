@@ -36,14 +36,8 @@ function reload() {
         recipeNameEl.textContent = recipeName;
         // Split and join recipeIngredients to display on separate lines
         document.getElementById('ingredientDescription').innerHTML = combo.recipeIngredients.replace(/\,/g, '<br>');
-        const listItem = document.createElement('li');
-        listItem.classList.add('mb-3');
+        }
     }
-}
-const columnId = `column0`;
-
-const column = document.getElementById(columnId);
-column.appendChild(listItem);
 
     // Add a click event on buttons to open a specific modal
     (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
@@ -72,7 +66,13 @@ column.appendChild(listItem);
     });
 
     // Create a huge button
-    const hugeButton = document.getElementById('button');
+    const listItem = document.createElement('li');
+        listItem.classList.add('mb-3');
+   
+    const columnId = `column0`;
+    const column = document.getElementById(columnId);
+    column.appendChild(listItem);
+    const hugeButton = document.createElement('button');
     hugeButton.classList.add('button', 'is-primary', 'is-large', 'js-modal-trigger');
     hugeButton.dataset.target.add('modal-trigger');
     hugeButton.textContent = movieName +' / '+ recipeName;
