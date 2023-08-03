@@ -5,6 +5,7 @@ var movieImageEl = document.querySelector('#movieImage');
 var movieNameEl = document.getElementById('movieName');
 var movieDescriptionEl = document.getElementById('movieDescription');
 var movieGenreEl = document.getElementById('movie-tag-field');
+var movieTextEx = document.getElementById('movieText');
 
 var recipeClearBtn = document.querySelector('#munchie-clear-tag');
 var recipeSearchBtn = document.querySelector('#recipeSearch');
@@ -12,11 +13,17 @@ var recipeSkipBtn = document.querySelector('#recipeSkip');
 var recipeImageEl = document.querySelector('#recipeImage');
 var recipeNameEl = document.getElementById('recipeName');
 var recipeDescriptionEl = document.getElementById('ingredientDescription');
+var recipeTextEx = document.getElementById('munchieText');
 
 
 var listGenres = ['Biography', 1, 'Film Noir', 2, 'Musical', 4, 'Sport', 5, 'Short', 6, 'Adventure', 12, 
   'Fantasy', 14, 'Animation', 16, 'Drama', 18, 'Action', 28, 'Comedy', 35, 'History', 36, 'Thriller', 53, 
   'Crime', 80, 'Documentary', 99, 'Mystery', 9648, 'Family', 10751, 'War', 10752];
+
+
+var cuisines = ['African', 'American', 'British', 'Cajun', 'Caribbean', 'Chinese', 'Eastern European', 'European',
+  'French', 'German', 'Greek', 'Indian', 'Irish', 'Italian', 'Japanese', 'Jewish', 'Korean', 'Latin American',
+  'Mediterranean', 'Mexican', 'Middle Eastern', 'Nordic', 'Southern', 'Spanish', 'Thai', 'Vietnamese'];
 
 
 // THIS IS THE ONE WE WILL USE BELOW
@@ -52,6 +59,7 @@ async function searchMoviesByGenreAndService(genreId, streamingServices) {
       const availableOn = Object.keys(randomMovie.streamingInfo).filter(service => randomMovie.streamingInfo[service] === true);
       movieImageEl.setAttribute('src', randomMovie.posterURLs.original);
       movieNameEl.textContent = randomMovie.title;
+      movieTextEx.textContent = '';
       movieDescriptionEl.textContent = randomMovie.overview;
       return {
         movieImage: randomMovie.posterURLs.original,
@@ -72,15 +80,18 @@ async function searchMoviesByGenreAndService(genreId, streamingServices) {
 // MOVIE SEARCH EVENT
 movieSearchBtn.addEventListener('click', function (event) {
   event.preventDefault();
-  deleteMovieText();
   const selectedCategory = document.getElementById('movie-tag-input').value;
   if (!selectedCategory) {
-    alert("Please select a genre.")
+    alert("Please select a genre.");
+    return;
   } else {
     for (var i = 0; i < listGenres.length; i+=2) {
       if (listGenres[i] === selectedCategory) {
         var number = listGenres[i + 1];
         searchMoviesByGenreAndService(number, ['netflix', 'prime.buy', 'hulu.addon.hbo', 'peacock.free']);
+        return;
+      } else if (i === (listGenres.length - 2)) {
+        alert("Invalid genre. Please select a valid genre.");
         return;
       }
     }
@@ -94,14 +105,19 @@ movieSkipBtn.addEventListener('click', function (event) {
   const selectedCategory = document.getElementById('movie-tag-input').value;
   if (!movieImageEl.src) {
     alert('Please search for a movie first.');
+    return;
   } else {
     if (!selectedCategory) {
-      alert('Please search for the new genre first.')
+      alert('Please search for the new genre first.');
+      return;
     } else {
       for (var i = 0; i < listGenres.length; i += 2) {
         if (listGenres[i] === selectedCategory) {
           var number = listGenres[i + 1];
           searchMoviesByGenreAndService(number, ['netflix', 'prime.buy', 'hulu.addon.hbo', 'peacock.free']);
+          return;
+        } else if (i === (listGenres.length - 2)) {
+          alert("Invalid genre. Please select a valid genre.");
           return;
         }
       }
@@ -171,12 +187,19 @@ async function searchRandomRecipeByCuisine(cuisineType) {
 // RECIPE SEARCH EVENT
 recipeSearchBtn.addEventListener('click', function (event) {
   event.preventDefault();
-  deleteMunchieText();
   const selectedCuisine = document.getElementById('munchie-tag-input').value;
   if (!selectedCuisine) {
     alert("Please select a cuisine.");
-  } else {
-    searchRandomRecipeByCuisine(selectedCuisine);
+    return;
+  } 
+  for (var i = 0; i < cuisines.length; i++) {
+    if (selectedCuisine === cuisines[i]) {
+      searchRandomRecipeByCuisine(selectedCuisine);
+      return;
+    } else if (i === (cuisines.length - 1)) {
+      alert("Invalid cuisine. Please select a valid cuisine.");
+      return;
+    }
   }
 })
 
@@ -187,11 +210,20 @@ recipeSkipBtn.addEventListener('click', function (event) {
   const selectedCuisine = document.getElementById('munchie-tag-input').value;
   if (!recipeImageEl.src) {
     alert('Please search for a recipe first.');
+    return;
   } else {
     if (!selectedCuisine) {
       alert('Please search for the new cuisine first.');
-    } else {
-      searchRandomRecipeByCuisine(selectedCuisine);
+      return;
+    }
+    for (var i = 0; i < cuisines.length; i++) {
+      if (selectedCuisine === cuisines[i]) {
+        searchRandomRecipeByCuisine(selectedCuisine);
+        return;
+      } else if (i === (cuisines.length - 1)) {
+        alert("Invalid cuisine. Please select a valid cuisine.");
+        return;
+      }
     }
   }
 })
@@ -226,8 +258,9 @@ async function testRecipe(recipeId) {
     var ingredients = "";
     if (result.ingredients && result.ingredients.length > 0) {
       result.ingredients.forEach(ingredient => {
-        ingredients = ingredients + (`${ingredient.name} - ${ingredient.amount.metric.value} ${ingredient.amount.metric.unit} \n`);
+        ingredients = ingredients + (`${ingredient.name} - ${ingredient.amount.metric.value} ${ingredient.amount.metric.unit}, \n`);
       });
+      recipeTextEx.textContent = '';
       recipeDescriptionEl.innerHTML = ingredients.replace(/\n/g, '<br>');
     } else {
       console.log(`No ingredients found for the recipe with ID: ${recipeId}`);
@@ -268,104 +301,107 @@ function createMovieTag(message) {
 
 }
 
-// // When add button is clicked, create movie tag with the input text from movieTagInput
-// movieAddTag.addEventListener("click", () => {
-//     if (movieTagInput.value !== "") {
-//         createMovieTag(movieTagInput.value);
-//     }
-//     // Clear movieTagInput
-//     movieTagInput.value = "";
-// });
-
-// // Same as above except with enter key pressed to add tag
-// movieTagInput.addEventListener("keyup", (event) => {
-//     if ((event.keyCode === 13) && (movieTagInput.value !== "")) {
-//         createMovieTag(movieTagInput.value);
-//         movieTagInput.value = "";
-//     }
-// });
-
-
-
-// // Code for food search tags
-// const munchieTagField = document.getElementById("munchie-tag-field");
-// const munchieAddTag = document.getElementById("munchie-add-tag");
-// const munchieTagInput = document.getElementById("munchie-tag-input");
-
-// function createMunchieTag(message) {
-//     const controlDiv = document.createElement("div");
-//     controlDiv.classList.add("control");
-
-//     const tags = document.createElement("div");
-//     tags.classList.add("tags", "has-addons");
-
-//     const tagContent = document.createElement("a");
-//     tagContent.classList.add("tag", "is-link");
-//     tagContent.innerText = message;
-
-//     const tagDelete = document.createElement("a");
-//     tagDelete.classList.add("tag", "is-delete");
-//     tagDelete.addEventListener("click", (event) => {
-//         munchieTagField.removeChild(controlDiv);
-//     });
-
-//     // finally nest all the tags together
-//     tags.appendChild(tagContent);
-//     tags.appendChild(tagDelete);
-//     controlDiv.appendChild(tags);
-//     munchieTagField.appendChild(controlDiv);
-
-// }
-
-// munchieAddTag.addEventListener("click", () => {
-//     if (munchieTagInput.value !== "") {
-//         createMunchieTag(munchieTagInput.value);
-//     }
-//     munchieTagInput.value = "";
-// });
-
-// munchieTagInput.addEventListener("keyup", (event) => {
-//     if ((event.keyCode === 13) && (munchieTagInput.value !== "")) {
-//         createMunchieTag(munchieTagInput.value);
-//         munchieTagInput.value = "";
-//     }
-// });
 
 function deleteMovieText() {
-    var movieTextEl = document.querySelector("#movieText");
-  
-    movieTextEl.setAttribute('class', 'is-hidden');
+  var movieTextEl = document.querySelector("#movieText");
+
+  movieTextEl.setAttribute('class', 'is-hidden');
 }
 
 function deleteMunchieText() {
-    var munchieTextEl = document.querySelector("#munchieText");
-  
-    munchieTextEl.setAttribute('class', 'is-hidden');
+  var munchieTextEl = document.querySelector("#munchieText");
+
+  munchieTextEl.setAttribute('class', 'is-hidden');
 }
 
 var save = document.getElementById('saveBtn');
 
-function saveMovie() {
-    var movieTitles = JSON.parse(localStorage.getItem('movieTitles')) || [];
-    console.log(movieTitles);
-    movieTitles.push(movieNameEl.textContent);
-    console.log(movieTitles);
-    localStorage.setItem('movieTitles', JSON.stringify(movieTitles));
-    console.log(localStorage.getItem('movieTitles'));
+
+function saveCombo() {
+  const movieName = document.getElementById('movieName').textContent;
+  const recipeName = document.getElementById('recipeName').textContent;
+  const movieDescription = document.getElementById('movieDescription').textContent;
+  const recipeIngredients = document.getElementById('ingredientDescription').textContent;
+  const movieImageEl = document.querySelector('#movieImage');
+  const movieImg = movieImageEl.getAttribute('src');
+  const recipeImageEl = document.querySelector('#recipeImage');
+  const recipeImg = recipeImageEl.getAttribute('src');
+  var tally = 0;
+  // if tally does not exist yet, then just use prior set 0
+  if (localStorage.getItem('tally') !== null) {
+      var intValue = localStorage.getItem('tally');
+      tally = parseInt(intValue);
+  }
+
+  var combos = [];
+  if (tally !== 0) {
+    const storedCombo = localStorage.getItem('combos');
+    const parsedData = JSON.parse(storedCombo);
+    combos = parsedData;
 }
 
-function saveMunchie() {
-    var munchieTitles = JSON.parse(localStorage.getItem('munchieTitles')) || [];
-    console.log(munchieTitles);
-    munchieTitles.push(recipeNameEl.textContent);
-    console.log(munchieTitles);
-    localStorage.setItem('munchieTitles', JSON.stringify(munchieTitles));
-    console.log(localStorage.getItem('munchieTitles'));
-}
+  if (localStorage.getItem('combos') )
 
+  if (movieName === '' && recipeName === '') {
+    alert('Please search for a movie or recipe.');
+    return;
+  }
+
+  if (tally !== 0) {
+    var id = movieName + recipeName;
+    var lastSavedData = localStorage.getItem(id);
+    const parsedData = JSON.parse(lastSavedData);
+    if (localStorage.getItem(id) !== null) {
+      alert('This combination has already been saved');
+      return;
+    }
+  }
+
+  if (tally === 25) {
+    clear();
+    var intValue = localStorage.getItem('tally');
+    tally = parseInt(intValue);
+  }
+
+  const formattedIngredients = recipeIngredients.replace(/\n/g, ',');
+  const combo = {
+    movieName: movieName,
+    recipeName: recipeName,
+    movieDescription: movieDescription,
+    recipeIngredients: formattedIngredients,
+    movieImg: movieImg,
+    recipeImg: recipeImg
+  };
+  const comboJSON = JSON.stringify(combo);
+  tally = tally + 1;
+
+  var id = movieName + recipeName;
+  localStorage.setItem(id, comboJSON);
+  localStorage.setItem('tally', tally);
+
+  if (combos.length === 0) {
+    combos = [id];
+  } else {
+    combos.push(id);
+  }
+  var combosString = JSON.stringify(combos);
+  localStorage.setItem('combos', combosString);
+}
 
 
 save.addEventListener('click', function (event) {
-    saveMovie();
-    saveMunchie();
+  event.preventDefault();
+  saveCombo();
 })
+
+
+function clear() {
+  localStorage.clear()
+  var tally = 0;
+  localStorage.setItem('tally', tally);
+  var combos = [];
+  var combosString = JSON.stringify(combos);
+  localStorage.setItem('combos', combosString);
+}
+
+// clear();
