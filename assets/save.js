@@ -1,35 +1,4 @@
 
-// function listMovies() {
-//     var movieTitles = JSON.parse(localStorage.getItem('movieTitles'));
-//     for (var i = 0; i < movieTitles.length; i++) {
-//         var liEl = document.createElement('li');
-//         liEl.textContent = movieTitles[i];
-//         liEl.setAttribute('class', 'box');
-//         liEl;
-//         console.log(liEl);
-
-//         var olEl = document.getElementById('movieTitles');
-//         olEl.appendChild(liEl);
-//     }
-// }
-
-// function listMunchies() {
-//     var munchieTitles = JSON.parse(localStorage.getItem('munchieTitles'));
-//     for (var i = 0; i < munchieTitles.length; i++) {
-//         var liEl = document.createElement('li');
-//         liEl.textContent = munchieTitles[i];
-//         liEl.setAttribute('class', 'box');
-//         liEl;
-//         console.log(liEl);
-
-//         var olEl = document.getElementById('munchieTitles');
-//         olEl.appendChild(liEl);
-//     }
-// }
-
-// listMovies();
-// listMunchies();
-
 function reload() {
     var tally = 0; 
     // if tally does not exist yet, then just use prior set 0
@@ -45,28 +14,36 @@ function reload() {
     for (var i = 1; i < tally + 1; i++) {
         const data = localStorage.getItem('combo' + i.toString());
         const combo = JSON.parse(data);
-        var liEl = document.createElement('li');
-        liEl.textContent = combo.movieName + " / " + combo.recipeName;
-        var movieTitleEl = document.getElementById("movieTitle");
-        movieTitleEl.textContent(combo.movieName);
-        var recipeNameEl = document.getElementById("recipeName");
-        recipeNameEl.textContent(combo.recipeName);
-        var movieDescriptionEl = document.getElementById("movieDescription");
-        movieDescriptionEl.textContent(combo.movieDescription);
-        var recipeIngredientsEl = document.getElementById("recipeIngredients");
-        recipeIngredientsEl.textContent(combo.recipeIngredients);
         
+        // to get movie name, combo.movieName
+        const movieName = combo.movieName;
+        // to get recipe name, combo.recipeName
+        const recipeName = combo.recipeName;
+        // to get movie description, combo.movieDescription
+        const movieDescription = combo.movieDescription;
+        // to get ingredients, combo.recipeIngredients
+        const recipeIngredients = combo.recipeIngredients;
         // to get movie image link, combo.movieImg
+        const movieImage = combo.movieImg;
         // to get recipe image link, combo.recipeImg
+        const recipeImage = combo.recipeImg;
         console.log(combo);
-        // get the various id elements from html and add those parts
-        // however you think. 
-        // remember both the movie parts are links that need to be placed in src
-        // maybe only have recipe and movie name displayed in the small box but 
-        // when clicked on, have all the information pop up like the main page
-        // with a specific windor for that info, like on project 6.
+        movieImageEl.setAttribute('src', movieImage);
+        movieNameEl.textContent = movieName;
+        movieDescriptionEl.textContent = movieDescription;
+    
+        recipeImageEl.setAttribute('src', recipeImage);
+        recipeNameEl.textContent = recipeName;
+        // Split and join recipeIngredients to display on separate lines
+        document.getElementById('ingredientDescription').innerHTML = combo.recipeIngredients.replace(/\,/g, '<br>');
+        const listItem = document.createElement('li');
+        listItem.classList.add('mb-3');
     }
 }
+const columnId = `column0`;
+
+const column = document.getElementById(columnId);
+column.appendChild(listItem);
 
     // Add a click event on buttons to open a specific modal
     (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
@@ -93,6 +70,51 @@ function reload() {
         closeAllModals();
       }
     });
-  
+
+    // Create a huge button
+    const hugeButton = document.getElementById('button');
+    hugeButton.textContent = movieName +' / '+ recipeName;
+    hugeButton.setAttribute('id', combos[i]);
+        const id = this.getAttribute('id');
+        const data = localStorage.getItem(id);
+
+
+    
+    listItem.appendChild(hugeButton);
+
+    // Create a small delete button
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('button', 'is-danger', 'is-small');
+    deleteButton.textContent = 'Delete';
+    deleteButton.setAttribute('id', 'delete');
+    deleteButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        const listItem = this.parentElement;
+
+        var combos = [];
+        const storedCombos = localStorage.getItem('combos');
+        const parsedData = JSON.parse(storedCombos);
+        combos = parsedData;
+        const indexToRemove = combos.indexOf(this.previousSibling.getAttribute('id'));
+
+        combos.splice(indexToRemove, 1);
+        localStorage.removeItem(this.previousSibling.getAttribute('id')); // Remove the corresponding item from local storage
+        listItem.remove(); // Remove the whole <li> element containing the buttons
+        var tally = 0;
+        if (localStorage.getItem('tally') !== null) {
+            var intValue = localStorage.getItem('tally');
+            tally = parseInt(intValue);
+        }
+        tally = tally - 1;
+        localStorage.setItem('tally', tally);
+        var combosString = JSON.stringify(combos);
+        localStorage.setItem('combos', combosString);
+    });
+    listItem.appendChild(deleteButton);
+
+    // Append the listItem to the corresponding column
+   
+
+
 
 reload();
